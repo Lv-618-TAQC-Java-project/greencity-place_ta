@@ -32,7 +32,7 @@ public abstract class Base {
                     driver = new FirefoxDriver();
                     break;
                 }
-                case "IE": {
+                case "ie": {
                     System.setProperty("webdriver.ie.driver", "src/main/resources/webdriver/IEDriverServer.exe");
                     driver = new InternetExplorerDriver();
                     break;
