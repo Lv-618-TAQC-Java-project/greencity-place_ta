@@ -1,44 +1,47 @@
 package pages;
 
-import org.apache.maven.plugin.logging.Log;
-import org.openqa.selenium.By;
+import elements.LinkElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class LoginPage {
     public WebDriver driver;
 
-    By email = By.xpath("//input[@name='email']");
-    By password = By.xpath("//input[@name='form-control password-signin']");
-    By signInButtonl = By.xpath("//button[@type='submit']");
-    By signInWithGoogleButton = By.xpath("//span[@class='google-text-sign-in']");
-
-    WebElement emailField;
-    WebElement passwordField;
-    WebElement signInButton;
+    private LinkElement emailField;
+    private LinkElement passwordField;
+    private LinkElement signInButton;
+    private LinkElement signInWithGoogleButton;
 
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
     }
 
-    public WebElement getEmailField() {
-        emailField = driver.findElement(email);
+    public LinkElement getEmailField() {
+        if (emailField == null)
+            emailField = new LinkElement(driver, emailField);
         return emailField;
     }
 
-    public WebElement getPasswordField() {
-        passwordField = driver.findElement(password);
+    public LinkElement getPasswordField() {
+        if (passwordField == null)
+            passwordField = new LinkElement(driver, passwordField);
         return passwordField;
     }
 
-    public WebElement getSignInButton() {
-        signInButton = driver.findElement(signInButtonl);
+    public LinkElement getSignInButton() {
+        if (signInButton == null)
+            signInButton = new LinkElement(driver, signInButton);
         return signInButton;
     }
 
+    public LoginPage clearEmail() {
+
+        return this;
+    }
+
     public LoginPage setEmail(String email) {
-        this.getEmailField().sendKeys(email);
+        this.getEmailField().click();
         return this;
     }
 
