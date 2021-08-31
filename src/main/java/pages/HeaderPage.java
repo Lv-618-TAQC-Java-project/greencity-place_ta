@@ -28,9 +28,30 @@ public class HeaderPage {
         return signInButton;
     }
 
+
     public LoginPage clickSignInButton() {
         getSignInButton().click();
         return new LoginPage(driver);
+    }
+
+    public HeaderPage clickLanguageButton() {
+        getButtonLanguage().click();
+        return this;
+    }
+
+    public HeaderPage clickUaLanguage() {
+        getButtonUa().click();
+        return this;
+    }
+
+    public HeaderPage clickRuLanguage() {
+        getButtonRu().click();
+        return this;
+    }
+
+    public HeaderPage clickEnLanguage() {
+        getButtonEn().click();
+        return this;
     }
 
     public WebElement getButtonLanguage() {
