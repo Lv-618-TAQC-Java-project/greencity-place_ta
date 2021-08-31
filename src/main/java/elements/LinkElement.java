@@ -1,0 +1,14 @@
+package elements;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class LinkElement extends BaseElement {
+    public LinkElement(WebDriver driver, By path) {
+        super(driver, path);
+    }
+
+    public void click() {
+        this.element.click();
+    }
+}

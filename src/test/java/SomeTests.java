@@ -1,22 +1,14 @@
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pageObjects.HeaderPage;
-import pageObjects.LoginPage;
+import pages.HeaderPage;
+import pages.LoginPage;
 
-public class SomeTests extends Base implements SomeTestsDataProvider {
-    String greenCityUrl = "https://ita-social-projects.github.io/GreenCityClient/#/";
 
-    @BeforeMethod
-    public void setUp() {
-        driver = initializeDriver();
-        driver.get(greenCityUrl);
-    }
+public class SomeTests extends TestRunner implements SomeTestsDataProvider {
 
-    @AfterMethod
-    public void tearDown() {
-        driver.quit();
-    }
+
 
     @Test
     public void switchLanguages() {
@@ -31,16 +23,14 @@ public class SomeTests extends Base implements SomeTestsDataProvider {
     }
 
     @Test(dataProvider = "adminCredentials")
-    public void logInWithAdminCredentials(String adminEmail, String adminPassword) throws InterruptedException {
-        HeaderPage headerPage = new HeaderPage(driver);
-        headerPage.getSignInButton().click();
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.getSignInButton().click();
-        loginPage.getEmailField().clear();
-        loginPage.getPasswordField().clear();
-        loginPage.getEmailField().sendKeys(adminEmail);
-        loginPage.getPasswordField().sendKeys(adminPassword);
-        loginPage.getSignInButton().click();
-        Thread.sleep(5000);
+    public void logInWithAdminCredentials(String adminEmail, String adminPassword) {
+        new HeaderPage(driver).
+                clickSignInButton().
+                clearEmailField().
+                setEmail(adminEmail).
+                clearPasswordField().
+                setPassword(adminPassword).
+                clickSignInButton();
+        Assert.assertEquals(driver.getCurrentUrl(), "https://ita-social-projects.github.io/GreenCityClient/#/profile/7602");
     }
 }
