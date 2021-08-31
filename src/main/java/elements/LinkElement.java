@@ -11,4 +11,13 @@ public class LinkElement extends BaseElement {
     public void click() {
         this.element.click();
     }
+
+    public void clear() {
+        this.element.clear();
+    }
+
+    public void sendKeys(String s) {
+        this.element.sendKeys(s);
+    }
+
 }

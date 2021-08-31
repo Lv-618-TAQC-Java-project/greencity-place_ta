@@ -8,8 +8,6 @@ import pages.LoginPage;
 
 public class SomeTests extends TestRunner implements SomeTestsDataProvider {
 
-
-
     @Test
     public void switchLanguages() {
         HeaderPage headerPage = new HeaderPage(driver);
