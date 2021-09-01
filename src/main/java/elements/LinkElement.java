@@ -20,4 +20,8 @@ public class LinkElement extends BaseElement {
         this.element.sendKeys(s);
     }
 
+    public String getAttribute(String attribute){
+        return this.element.getAttribute(attribute);
+    }
+
 }
