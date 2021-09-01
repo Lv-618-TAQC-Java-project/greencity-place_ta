@@ -62,12 +62,13 @@ public class LoginPage {
     }
 
 
-    public void clickSignInButton() {
+    public HeaderPage clickSignInButton() {
         this.getSignInButton().click();
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        return new HeaderPage(driver);
     }
 }

@@ -16,6 +16,8 @@ public class HeaderPage {
     private LinkElement signInButton;
     private LinkElement homeButton;
     private LinkElement languageButton;
+    private LinkElement userButton;
+    private LinkElement ubsAdminButton;
 
 
     public HeaderPage(WebDriver driver) {
@@ -28,6 +30,16 @@ public class HeaderPage {
         return signInButton;
     }
 
+    public LinkElement getUserButton(){
+        if(userButton == null)
+            userButton = new LinkElement(driver, HeaderLocator.USER_BUTTON.getPath());
+        return userButton;
+    }
+    public LinkElement getUbsAdminButton(){
+        if(ubsAdminButton == null)
+            ubsAdminButton = new LinkElement(driver, HeaderLocator.UBS_ADMIN_BUTTON.getPath());
+        return ubsAdminButton;
+    }
 
     public LoginPage clickSignInButton() {
         getSignInButton().click();
@@ -38,6 +50,8 @@ public class HeaderPage {
         getButtonLanguage().click();
         return this;
     }
+
+
 
     public HeaderPage clickUaLanguage() {
         getButtonUa().click();
@@ -52,6 +66,20 @@ public class HeaderPage {
     public HeaderPage clickEnLanguage() {
         getButtonEn().click();
         return this;
+    }
+    public HeaderPage clickUserButton(){
+        getUserButton().click();
+        return this;
+    }
+
+    public UbsAdminPage clickUbsAdminButton(){
+        getUbsAdminButton().click();
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return new UbsAdminPage(driver);
     }
 
     public WebElement getButtonLanguage() {
