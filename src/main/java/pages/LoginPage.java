@@ -4,8 +4,7 @@ import elements.LinkElement;
 import locators.LoginLocators;
 import org.openqa.selenium.WebDriver;
 
-public class LoginPage {
-    public WebDriver driver;
+public class LoginPage extends BasePageObject{
 
     private LinkElement emailField;
     private LinkElement passwordField;
@@ -14,7 +13,7 @@ public class LoginPage {
 
 
     public LoginPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     public LinkElement getEmailField() {

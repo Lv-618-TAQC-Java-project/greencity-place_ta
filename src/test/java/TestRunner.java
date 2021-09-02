@@ -30,12 +30,14 @@ public abstract class TestRunner {
         }
     }
 
+
     @BeforeClass
     public void beforeClass() {
         initializeDriver();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
         driver.manage().window().maximize();
+
     }
 
     @AfterClass

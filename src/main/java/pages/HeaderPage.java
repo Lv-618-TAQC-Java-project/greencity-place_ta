@@ -4,9 +4,9 @@ import elements.LinkElement;
 import locators.HeaderLocator;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import pages.UBSadmin.UBSadminPage.UbsAdminPage;
 
-public class HeaderPage {
-    private final WebDriver driver;
+public class HeaderPage extends BasePageObject{
     private LinkElement ecoNews;
     private LinkElement tipsAndTricks;
     private LinkElement places;
@@ -21,7 +21,7 @@ public class HeaderPage {
 
 
     public HeaderPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     public LinkElement getSignInButton() {
@@ -46,11 +46,11 @@ public class HeaderPage {
         return new LoginPage(driver);
     }
 
+
     public HeaderPage clickLanguageButton() {
         getButtonLanguage().click();
         return this;
     }
-
 
 
     public HeaderPage clickUaLanguage() {
@@ -74,11 +74,6 @@ public class HeaderPage {
 
     public UbsAdminPage clickUbsAdminButton(){
         getUbsAdminButton().click();
-        try {
-            Thread.sleep(4000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         return new UbsAdminPage(driver);
     }
 

@@ -24,4 +24,9 @@ public class LinkElement extends BaseElement {
         return this.element.getAttribute(attribute);
     }
 
+
+    public String getText() {
+        return this.element.getText();
+    }
+
 }
