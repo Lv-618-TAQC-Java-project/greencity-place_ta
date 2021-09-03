@@ -1,6 +1,6 @@
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.HeaderPage;
+import com.ita.edu.greencity.ui.pages.HeaderPage;
 
 
 public class SomeTests extends TestRunner implements SomeTestsDataProvider {
@@ -10,7 +10,6 @@ public class SomeTests extends TestRunner implements SomeTestsDataProvider {
         new HeaderPage(driver).
                 clickLanguageButton().
                 clickUaLanguage();
-
     }
 
     @Test(dataProvider = "adminCredentials")
