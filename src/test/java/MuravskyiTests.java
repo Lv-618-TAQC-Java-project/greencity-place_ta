@@ -45,7 +45,7 @@ public class MuravskyiTests extends TestRunner implements SomeTestsDataProvider 
      */
     @Test(dataProvider = "adminCredentials")
     public void VerifyUIOfDropdown(String adminEmail, String adminPassword) {
-        ArrayList<String> expectedTQ224 = new ArrayList<>(Arrays.asList("orderid", "order_status", "order_date", "clientname", "phone_number", "email", "violations",
+        ArrayList<String> expectedTQ224En = new ArrayList<>(Arrays.asList("orderid", "order_status", "order_date", "clientname", "phone_number", "email", "violations",
                 "district", "address", "recipient_name", "recipient_phone", "recipient_email", "comment_to_address_for_client", "garbage_bags_120_amount",
                 "bo_bags_120_amount", "bo_bags_20_amount", "total_order_sum", "order_certificate_code", "order_certificate_points", "amount_due",
                 "comment_for_order_by_client", "payment_system", "date_of_export", "time_of_export", "id_order_from_shop", "receiving_station", "responsible_manager",
@@ -63,7 +63,7 @@ public class MuravskyiTests extends TestRunner implements SomeTestsDataProvider 
                 clickViewTable().
                 readAllCheckBoxNames(actual);
         System.out.println(actual);
-        Assert.assertEquals(actual, expectedTQ224);
+        Assert.assertEquals(actual, expectedTQ224En);
     }
 
     /**
