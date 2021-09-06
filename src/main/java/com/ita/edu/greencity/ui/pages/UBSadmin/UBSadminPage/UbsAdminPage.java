@@ -2,13 +2,17 @@ package com.ita.edu.greencity.ui.pages.UBSadmin.UBSadminPage;
 
 import com.ita.edu.greencity.ui.elements.LinkElement;
 import com.ita.edu.greencity.ui.locators.UbsAdminLocators;
-import org.openqa.selenium.By;
+import com.ita.edu.greencity.ui.locators.ubsAdminLocator.ubsAdminPageLocator.UBSAdminRowTableComponentLocator;
+import com.ita.edu.greencity.ui.locators.ubsAdminLocator.ubsAdminPageLocator.UBSAdminTableComponentLocator;
 import org.openqa.selenium.WebDriver;
 import com.ita.edu.greencity.ui.pages.UBSadmin.USBAdminCommon;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class UbsAdminPage extends USBAdminCommon {
+    private USBAdminTableComponent usbAdminTableComponent;
+    private UBSAdminRowTableComponentLocator ubsAdminRowTableComponentLocator;
+
     private LinkElement searchField;
     private LinkElement searchIcon;
     private LinkElement viewTable;
@@ -24,6 +28,7 @@ public class UbsAdminPage extends USBAdminCommon {
     }
 
     public UbsAdminPage setSearchField(String text) {
+        tableIsLoaded();
         this.getSearchField().sendKeys(text);
         return this;
     }
@@ -47,7 +52,7 @@ public class UbsAdminPage extends USBAdminCommon {
 
     public UbsAdminPage tableIsLoaded() {
         WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.presenceOfElementLocated(UbsAdminLocators.TABLE.getPath()));
+        wait.until(ExpectedConditions.presenceOfElementLocated(UBSAdminTableComponentLocator.TABLE.getPath()));
         return this;
     }
 

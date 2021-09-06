@@ -1,3 +1,4 @@
+import com.ita.edu.greencity.ui.pages.UBSadmin.UBSadminPage.USBAdminRowTableComponent;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import com.ita.edu.greencity.ui.pages.HeaderPage;
@@ -23,19 +24,21 @@ public class MuravskyiTests extends TestRunner implements SomeTestsDataProvider 
      */
     @Test(dataProvider = "adminCredentials")
     public void verifyAddressColumnFromOrder(String adminEmail, String adminPassword) {
-        String actualAddress = "";
+        String result = new String();
         new HeaderPage(driver).
-                clickSignInButton().
-                clearEmailField().
-                setEmail(adminEmail).
-                clearPasswordField().
-                setPassword(adminPassword).
-                clickSignInButton().
-                clickUserButton().
-                clickUbsAdminButton().
-                clearSearchField().
-                setSearchField("1485");
-
+                clickSignInButton()
+                .clearEmailField()
+                .setEmail(adminEmail)
+                .clearPasswordField()
+                .setPassword(adminPassword)
+                .clickSignInButton()
+                .clickUserButton()
+                .clickUbsAdminButton()
+                .clearSearchField()
+                .setSearchField("1485");
+        result = new USBAdminRowTableComponent(driver).readAddressCellFirstRow(result);
+//        new USBAdminRowTableComponent(driver).parseAllMattCellsIntoList(result);
+        Assert.assertEquals(result, "Kiev, Tarasa Shevchenko Blvd, 8, 8,");
     }
 
     /**
@@ -52,16 +55,16 @@ public class MuravskyiTests extends TestRunner implements SomeTestsDataProvider 
                 "responsible_logic_man", "responsible_driver", "responsible_navigator", "comments_for_order"));
         List<String> actual = new ArrayList<>();
         actual = new HeaderPage(driver).
-                clickSignInButton().
-                clearEmailField().
-                setEmail(adminEmail).
-                clearPasswordField().
-                setPassword(adminPassword).
-                clickSignInButton().
-                clickUserButton().
-                clickUbsAdminButton().
-                clickViewTable().
-                readAllCheckBoxNames(actual);
+                clickSignInButton()
+                .clearEmailField()
+                .setEmail(adminEmail)
+                .clearPasswordField()
+                .setPassword(adminPassword)
+                .clickSignInButton()
+                .clickUserButton()
+                .clickUbsAdminButton()
+                .clickViewTable()
+                .readAllCheckBoxNames(actual);
         System.out.println(actual);
         Assert.assertEquals(actual, expectedTQ224En);
     }
@@ -79,18 +82,18 @@ public class MuravskyiTests extends TestRunner implements SomeTestsDataProvider 
                 "Дата вивезення", "Час вивезення", "Станція приймання", "№ замовлення з магазину", "ВІдповідальний менеджер", "Відповідальний логіст", "ВІдповідальний кур’єр",
                 "ВІдповідальний штурман", "ВІдповідальний штурман"));
         List<String> actual = new ArrayList<>();
-        actual = new HeaderPage(driver).
-                switchLanguageToUa().
-                clickSignInButton().
-                clearEmailField().
-                setEmail(adminEmail).
-                clearPasswordField().
-                setPassword(adminPassword).
-                clickSignInButton().
-                clickUserButton().
-                clickUbsAdminButton().
-                clickViewTable().
-                readAllCheckBoxNames(actual);
+        actual = new HeaderPage(driver)
+                .switchLanguageToUa()
+                .clickSignInButton()
+                .clearEmailField()
+                .setEmail(adminEmail)
+                .clearPasswordField()
+                .setPassword(adminPassword)
+                .clickSignInButton()
+                .clickUserButton()
+                .clickUbsAdminButton()
+                .clickViewTable()
+                .readAllCheckBoxNames(actual);
         System.out.println(actual);
         Assert.assertEquals(actual, expectedTQ224UA);
     }

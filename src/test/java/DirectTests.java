@@ -78,4 +78,5 @@ public class DirectTests extends TestRunner {
         String expected = "This is test comment for test case \"Коментар до адреси від клієнта\"";
         Assert.assertEquals(actualComment.getText(), expected);
     }
+
 }

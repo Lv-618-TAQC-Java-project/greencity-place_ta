@@ -1,7 +1,7 @@
 package com.ita.edu.greencity.ui.pages.UBSadmin.UBSadminPage;
 
 import com.ita.edu.greencity.ui.elements.LinkElement;
-import com.ita.edu.greencity.ui.locators.UBSadmin.UBSadminPage.UBSAdminViewTableComponentLocator;
+import com.ita.edu.greencity.ui.locators.ubsAdminLocator.ubsAdminPageLocator.UBSAdminViewTableComponentLocator;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import com.ita.edu.greencity.ui.pages.UBSadmin.USBAdminCommon;
