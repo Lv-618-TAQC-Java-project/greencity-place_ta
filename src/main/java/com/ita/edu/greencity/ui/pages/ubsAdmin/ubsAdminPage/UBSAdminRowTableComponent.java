@@ -1,19 +1,12 @@
 package com.ita.edu.greencity.ui.pages.ubsAdmin.ubsAdminPage;
 
-import com.ita.edu.greencity.ui.locators.ubsAdminLocator.ubsAdminPageLocator.UBSAdminRowTableComponentLocator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import java.util.List;
 
 public final class UBSAdminRowTableComponent {
     private final WebDriver driver;
     private final WebElement item;
-
-//    private WebElement firstRow;
-//    private WebElement firstRowAddressField;
-//    private WebElement mattCell;
-//    private WebElement orderId;
 
     public UBSAdminRowTableComponent(WebDriver driver, WebElement element) {
         this.driver = driver;
@@ -58,5 +51,73 @@ public final class UBSAdminRowTableComponent {
 
     public WebElement getRecipientName() {
         return item.findElement(By.className("cdk-column-recipient_name"));
+    }
+
+    public WebElement getRecipientPhone() {
+        return item.findElement(By.className("cdk-column-recipient_phone"));
+    }
+
+    public WebElement getRecipientEmail() {
+        return item.findElement(By.className("cdk-column-recipient_email"));
+    }
+
+    public WebElement getCommentToAddressToClient() {
+        return item.findElement(By.className("cdk-column-comment_to_address_for_client"));
+    }
+
+    public WebElement getGarbageBags120Amount() {
+        return item.findElement(By.className("cdk-column-garbage_bags_120_amount"));
+    }
+
+    public WebElement getBoBags120Amount() {
+        return item.findElement(By.className("cdk-column-bo_bags_120_amount"));
+    }
+
+    public WebElement getBoBags20Amount() {
+        return item.findElement(By.className("cdk-column-bo_bags_20_amount"));
+    }
+
+    public WebElement getTotalOrderSum() {
+        return item.findElement(By.className("cdk-column-total_order_sum"));
+    }
+
+    public WebElement getOrderCertificateCode() {
+        return item.findElement(By.className("cdk-column-order_certificate_code"));
+    }
+
+    public WebElement getOrderCertificatePoints() {
+        return item.findElement(By.className("cdk-column-order_certificate_points"));
+    }
+
+    public WebElement getAmountDue() {
+        return item.findElement(By.className("cdk-column-amount_due"));
+    }
+
+    public WebElement getCommentForOrderByClient() {
+        return item.findElement(By.className("cdk-column-comment_for_order_by_client"));
+    }
+
+    public WebElement getPaymentSystem() {
+        return item.findElement(By.className("cdk-column-payment_system"));
+    }
+
+    public WebElement getDateOfExport() {
+        return item.findElement(By.className("cdk-column-date_of_export"));
+    }
+
+    public WebElement getTimeOfExport() {
+        return item.findElement(By.className("cdk-column-time_of_export"));
+    }
+
+    public WebElement getIdOrderFromShop() {
+        return item.findElement(By.className("cdk-column-id_order_from_shop"));
+    }
+
+    public WebElement getReceivingStation() {
+        return item.findElement(By.className("cdk-column-receiving_station"));
+    }
+
+    public WebElement getResponsibleManager() {
+        return item.findElement(By.className("cdk-column-responsible_manager"));
     }
 }
