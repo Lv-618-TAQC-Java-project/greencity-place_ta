@@ -2,7 +2,7 @@ package com.ita.edu.greencity.ui.locators;
 
 import org.openqa.selenium.By;
 
-public enum LoginLocators implements BaseLocator {
+public enum LoginLocator implements BaseLocator {
 
     EMAIL_FIELD(By.xpath("//input[@name='email']")),
     PASSWORD_FIELD(By.xpath("//input[@name='form-control password-signin']")),
@@ -11,7 +11,7 @@ public enum LoginLocators implements BaseLocator {
 
     private final By path;
 
-    LoginLocators(By path) {
+    LoginLocator(By path) {
         this.path = path;
     }
 

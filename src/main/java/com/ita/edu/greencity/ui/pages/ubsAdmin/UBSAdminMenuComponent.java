@@ -1,11 +1,11 @@
-package com.ita.edu.greencity.ui.pages.UBSadmin;
+package com.ita.edu.greencity.ui.pages.ubsAdmin;
 
 import com.ita.edu.greencity.ui.elements.ListItemWithImageAndLink;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import com.ita.edu.greencity.ui.pages.BasePageObject;
+import com.ita.edu.greencity.ui.pages.BasePage;
 
-public class UBSAdminMenuComponent extends BasePageObject {
+public class UBSAdminMenuComponent extends BasePage {
     ListItemWithImageAndLink usersButton;
     ListItemWithImageAndLink certificatesButton;
     ListItemWithImageAndLink ordersButton;

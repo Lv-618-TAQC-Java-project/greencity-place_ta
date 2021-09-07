@@ -1,73 +1,73 @@
 package com.ita.edu.greencity.ui.pages;
 
-import com.ita.edu.greencity.ui.elements.LinkElement;
-import com.ita.edu.greencity.ui.locators.LoginLocators;
+import com.ita.edu.greencity.ui.locators.LoginLocator;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class LoginPage extends BasePageObject{
+public class LoginPage extends BasePage {
 
-    private LinkElement emailField;
-    private LinkElement passwordField;
-    private LinkElement signInButton;
-    private LinkElement signInWithGoogleButton;
+    private WebElement emailField;
+    private WebElement passwordField;
+    private WebElement signInButton;
+    private WebElement signInWithGoogleButton;
 
 
     public LoginPage(WebDriver driver) {
         super(driver);
     }
 
-    public LinkElement getEmailField() {
-        if (emailField == null)
-            emailField = new LinkElement(driver, LoginLocators.EMAIL_FIELD.getPath());
-        return emailField;
+    public WebElement getEmailField() {
+        return driver.findElement(LoginLocator.EMAIL_FIELD.getPath());
     }
 
-    public LinkElement getPasswordField() {
-        if (passwordField == null)
-            passwordField = new LinkElement(driver, LoginLocators.PASSWORD_FIELD.getPath());
-        return passwordField;
+    public WebElement getPasswordField() {
+        return driver.findElement(LoginLocator.PASSWORD_FIELD.getPath());
     }
 
-    public LinkElement getSignInButton() {
-        if (signInButton == null)
-            signInButton = new LinkElement(driver, LoginLocators.SIGN_IN_BUTTON.getPath());
-        return signInButton;
+    public WebElement getSignInButton() {
+        return driver.findElement(LoginLocator.SIGN_IN_BUTTON.getPath());
     }
 
-    public LinkElement getSignInWithGoogleButton() {
-        if (signInWithGoogleButton == null)
-            signInWithGoogleButton = new LinkElement(driver, LoginLocators.SIGN_IN_WITH_GOOGLE.getPath());
-        return signInWithGoogleButton;
+    public WebElement getSignInWithGoogleButton() {
+        return driver.findElement(LoginLocator.SIGN_IN_WITH_GOOGLE.getPath());
     }
 
     public LoginPage clearEmailField() {
-        this.getEmailField().clear();
+        getEmailField().clear();
         return this;
     }
 
-    public LoginPage setEmail(String email) {
-        this.getEmailField().sendKeys(email);
+    public LoginPage setEmailField(String s) {
+        getEmailField().sendKeys(s);
         return this;
     }
 
     public LoginPage clearPasswordField() {
-        this.getPasswordField().clear();
+        getEmailField().clear();
         return this;
     }
 
-    public LoginPage setPassword(String password) {
-        this.getPasswordField().sendKeys(password);
+    public LoginPage setPasswordField(String s) {
+        getPasswordField().sendKeys(s);
         return this;
     }
 
+
+    public LoginPage clickSignInWithGoogleButton() {
+        getSignInWithGoogleButton().click();
+        return this;
+    }
 
     public HeaderPage clickSignInButton() {
-        this.getSignInButton().click();
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        getSignInButton().click();
+        wainUntilPageIsLoaded();
         return new HeaderPage(driver);
+    }
+
+    public void wainUntilPageIsLoaded() {
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.urlContains("profile"));
     }
 }
