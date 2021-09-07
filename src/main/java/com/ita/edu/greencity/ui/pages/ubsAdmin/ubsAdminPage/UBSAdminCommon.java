@@ -1,5 +1,6 @@
 package com.ita.edu.greencity.ui.pages.ubsAdmin.ubsAdminPage;
 
+import com.ita.edu.greencity.tools.WaitHelper;
 import com.ita.edu.greencity.ui.locators.ubsAdminLocator.ubsAdminPageLocator.UBSAdminCommonLocator;
 import com.ita.edu.greencity.ui.locators.ubsAdminLocator.ubsAdminPageLocator.UBSAdminRowTableComponentLocator;
 import com.ita.edu.greencity.ui.locators.ubsAdminLocator.ubsAdminPageLocator.UBSAdminTableComponentLocator;
@@ -13,6 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class UBSAdminCommon extends BasePage {
 
+    private WaitHelper waitHelper;
     private UBSAdminTableComponent ubsAdminTableComponent;
     private UBSAdminViewTableComponent ubsAdminViewTableComponent;
     private UBSAdminRowTableComponentLocator ubsAdminRowTableComponentLocator;
@@ -66,10 +68,15 @@ public class UBSAdminCommon extends BasePage {
         return new UBSAdminViewTableComponent(driver);
     }
 
-    public UBSAdminTableComponent tableIsLoaded() {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(UBSAdminTableComponentLocator.TABLE.getPath()));
-        return new UBSAdminTableComponent(driver);
+    public void tableIsLoaded() {
+        waitHelper = new WaitHelper(driver);
+        waitHelper.waitForVisibilityOfElementLocated(UBSAdminTableComponentLocator.TABLE.getPath());
     }
+
+//    public UBSAdminTableComponent tableIsLoaded() {
+//        WebDriverWait wait = new WebDriverWait(driver, 10);
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(UBSAdminTableComponentLocator.TABLE.getPath()));
+//        return new UBSAdminTableComponent(driver);
+//    }
 
 }
