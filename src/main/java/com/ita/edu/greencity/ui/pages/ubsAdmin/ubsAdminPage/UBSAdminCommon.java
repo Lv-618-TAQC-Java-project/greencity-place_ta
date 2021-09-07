@@ -73,10 +73,4 @@ public class UBSAdminCommon extends BasePage {
         waitHelper.waitForVisibilityOfElementLocated(UBSAdminTableComponentLocator.TABLE.getPath());
     }
 
-//    public UBSAdminTableComponent tableIsLoaded() {
-//        WebDriverWait wait = new WebDriverWait(driver, 10);
-//        wait.until(ExpectedConditions.visibilityOfElementLocated(UBSAdminTableComponentLocator.TABLE.getPath()));
-//        return new UBSAdminTableComponent(driver);
-//    }
-
 }
