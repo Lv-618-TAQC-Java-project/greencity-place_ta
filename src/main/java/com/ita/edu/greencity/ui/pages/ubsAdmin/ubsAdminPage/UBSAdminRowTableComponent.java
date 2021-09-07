@@ -1,5 +1,6 @@
 package com.ita.edu.greencity.ui.pages.ubsAdmin.ubsAdminPage;
 
+import com.ita.edu.greencity.ui.locators.ubsAdminLocator.ubsAdminPageLocator.UBSAdminRowTableComponentLocator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,13 +9,30 @@ public final class UBSAdminRowTableComponent {
     private final WebDriver driver;
     private final WebElement item;
 
-    public UBSAdminRowTableComponent(WebDriver driver, WebElement element) {
+    public UBSAdminRowTableComponent(WebDriver driver, WebElement item) {
         this.driver = driver;
-        item = element;
+        this.item = item;
     }
 
-    public WebElement getOrderId() {
-        return item.findElement(By.className("cdk-column-orderid"));
+    public WebElement getCheckbox() {
+        return driver.findElement(UBSAdminRowTableComponentLocator.CHECKBOX.getPath());
+    }
+
+    public WebElement forCheckingCheckboxState() {
+        return driver.findElement(UBSAdminRowTableComponentLocator.CHECKING_STATE_OF_CHECKBOX.getPath());
+    }
+
+    public boolean isSelectedCheckBox() {
+        return forCheckingCheckboxState().isSelected();
+    }
+
+    public UBSAdminRowTableComponent clickOnCheckbox() {
+        getCheckbox().click();
+        return this;
+    }
+
+    public String getOrderIdText() {
+        return item.findElement(By.className("cdk-column-orderid")).getText();
     }
 
     public WebElement getOrderStatus() {
@@ -45,8 +63,8 @@ public final class UBSAdminRowTableComponent {
         return item.findElement(By.className("cdk-column-district"));
     }
 
-    public WebElement getAddress() {
-        return item.findElement(By.className("cdk-column-address"));
+    public String getAddressText() {
+        return item.findElement(UBSAdminRowTableComponentLocator.ADDRESS_CELL.getPath()).getText();
     }
 
     public WebElement getRecipientName() {

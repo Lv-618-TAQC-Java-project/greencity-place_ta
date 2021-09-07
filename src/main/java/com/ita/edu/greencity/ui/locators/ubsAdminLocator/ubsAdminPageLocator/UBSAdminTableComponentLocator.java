@@ -4,7 +4,8 @@ import com.ita.edu.greencity.ui.locators.BaseLocator;
 import org.openqa.selenium.By;
 
 public enum UBSAdminTableComponentLocator implements BaseLocator {
-    TABLE(By.xpath("//table[@role='presentation']"));
+    ROW(By.xpath("//tbody/mat-row[@role='row']")),
+    TABLE(By.xpath("//table[contains(@class,'mat-table')]"));
 
     private final By path;
 

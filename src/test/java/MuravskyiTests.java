@@ -1,4 +1,5 @@
 import com.ita.edu.greencity.ui.pages.HeaderPage;
+import com.ita.edu.greencity.ui.pages.HomePage;
 import com.ita.edu.greencity.ui.pages.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -25,14 +26,14 @@ public class MuravskyiTests extends TestRunner implements Repository {
      */
     @Test
     public void verifyAddressColumnFromOrder() {
-        String result = "";
-        result = new HeaderPage(driver)
-                .logIn("howiv47374@nenekbet.com", "Test-User123")
+        String result = new HomePage(driver)
+                .getHeaderPage()
+                .logIn()
                 .navigateToUBSAdminCommon()
                 .clearSearchField()
                 .setSearchField("1504")
-                .getUbsAdminTableComponent()
-                .readAddressCellFirstRow(result);
+                .getUbsAdminRowTableComponent()
+                .getAddressText();
         Assert.assertEquals(result, "Kiev, Tarasa Shevchenko Blvd, 8, 8,");
     }
 
@@ -44,8 +45,9 @@ public class MuravskyiTests extends TestRunner implements Repository {
     @Test
     public void VerifyUIOfDropdownEn() {
         List<String> actual = new ArrayList<>();
-        actual = new HeaderPage(driver)
-                .logIn("howiv47374@nenekbet.com", "Test-User123")
+        actual = new HomePage(driver)
+                .getHeaderPage()
+                .logIn()
                 .navigateToUBSAdminCommon()
                 .clickViewTable()
                 .readAllCheckBoxNames(actual);
@@ -61,9 +63,9 @@ public class MuravskyiTests extends TestRunner implements Repository {
     @Test
     public void VerifyUIOfDropdownUa() {
         List<String> actual = new ArrayList<>();
-        actual = new HeaderPage(driver)
-                .chooseLanguageUa()
-                .logIn("howiv47374@nenekbet.com", "Test-User123")
+        actual = new HomePage(driver)
+                .getHeaderPage()
+                .logIn()
                 .navigateToUBSAdminCommon()
                 .clickViewTable()
                 .readAllCheckBoxNames(actual);

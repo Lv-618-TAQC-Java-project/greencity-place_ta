@@ -1,3 +1,5 @@
+package com.ita.edu.greencity.tools;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -32,6 +34,16 @@ public class PropertiesProvider {
     public String getBrowser() {
         return prop.getProperty("browser");
     }
+
+    public String getAdminEmail() {
+        return prop.getProperty("adminEmail");
+    }
+
+    public String getAdminPassword() {
+        return prop.getProperty("adminPassword");
+    }
+
+
     
     
 }

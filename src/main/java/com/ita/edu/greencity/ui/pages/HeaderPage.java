@@ -1,5 +1,6 @@
 package com.ita.edu.greencity.ui.pages;
 
+import com.ita.edu.greencity.tools.PropertiesProvider;
 import com.ita.edu.greencity.ui.locators.HeaderLocator;
 import com.ita.edu.greencity.ui.pages.ubsAdmin.ubsAdminPage.UBSAdminCommon;
 import org.openqa.selenium.WebDriver;
@@ -85,13 +86,14 @@ public class HeaderPage extends BasePage {
         return new UBSAdminCommon(driver);
     }
 
-    public MySpacePage logIn(String email, String password) {
+    public MySpacePage logIn() {
+        PropertiesProvider prop = new PropertiesProvider();
         getHeaderPage()
                 .clickSignInButton()
                 .clearEmailField()
-                .setEmailField(email)
+                .setEmailField(prop.getAdminEmail())
                 .clearPasswordField()
-                .setPasswordField(password)
+                .setPasswordField(prop.getAdminPassword())
                 .clickSignInButton();
         return new MySpacePage(driver);
     }

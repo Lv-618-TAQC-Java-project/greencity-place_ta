@@ -4,12 +4,15 @@ import com.ita.edu.greencity.ui.locators.ubsAdminLocator.ubsAdminPageLocator.UBS
 import com.ita.edu.greencity.ui.locators.ubsAdminLocator.ubsAdminPageLocator.UBSAdminRowTableComponentLocator;
 import com.ita.edu.greencity.ui.locators.ubsAdminLocator.ubsAdminPageLocator.UBSAdminTableComponentLocator;
 import com.ita.edu.greencity.ui.pages.BasePage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class UBSAdminCommon extends BasePage {
+
     private UBSAdminTableComponent ubsAdminTableComponent;
     private UBSAdminViewTableComponent ubsAdminViewTableComponent;
     private UBSAdminRowTableComponentLocator ubsAdminRowTableComponentLocator;
@@ -44,6 +47,11 @@ public class UBSAdminCommon extends BasePage {
 
     public UBSAdminTableComponent getUbsAdminTableComponent() {
         return new UBSAdminTableComponent(driver);
+    }
+
+    public UBSAdminRowTableComponent getUbsAdminRowTableComponent() {
+        tableIsLoaded();
+        return new UBSAdminRowTableComponent(driver, driver.findElement(UBSAdminTableComponentLocator.ROW.getPath()));
     }
 
     public UBSAdminCommon setSearchField(String s) {

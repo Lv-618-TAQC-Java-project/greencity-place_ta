@@ -4,9 +4,9 @@ import com.ita.edu.greencity.ui.locators.BaseLocator;
 import org.openqa.selenium.By;
 
 public enum UBSAdminRowTableComponentLocator implements BaseLocator {
-    FIRST_RAW(By.xpath("//mat-row[@role='row']")),
-    FIRST_RAW_ADDRESS_CELL(By.xpath("//mat-cell[contains(@class,'column-address')]/div")),
-    MATT_CELL(By.xpath("//mat-cell[contains(@class,'mat-cell')]/div"));
+    ADDRESS_CELL(By.className("cdk-column-address")),
+    CHECKBOX(By.xpath("//tbody//div[@class='mat-checkbox-inner-container mat-checkbox-inner-container-no-side-margin']")),
+    CHECKING_STATE_OF_CHECKBOX(By.xpath("//tbody//div[@class='mat-checkbox-inner-container mat-checkbox-inner-container-no-side-margin']/input"));
 
     private final By path;
 

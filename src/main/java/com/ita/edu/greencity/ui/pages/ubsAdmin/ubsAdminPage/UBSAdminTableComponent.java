@@ -1,6 +1,7 @@
 package com.ita.edu.greencity.ui.pages.ubsAdmin.ubsAdminPage;
 
 import com.ita.edu.greencity.ui.locators.ubsAdminLocator.ubsAdminPageLocator.UBSAdminRowTableComponentLocator;
+import com.ita.edu.greencity.ui.locators.ubsAdminLocator.ubsAdminPageLocator.UBSAdminTableComponentLocator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -17,7 +18,7 @@ public class UBSAdminTableComponent extends UBSAdminCommon {
 
     public List<UBSAdminRowTableComponent> getRows() {
         rows = new ArrayList<>();
-        List<WebElement> webElements = driver.findElements(By.xpath("//mat-row[@role='row']"));
+        List<WebElement> webElements = driver.findElements(UBSAdminTableComponentLocator.ROW.getPath());
         for (WebElement element: webElements) {
             rows.add(new UBSAdminRowTableComponent(driver, element));
         }
