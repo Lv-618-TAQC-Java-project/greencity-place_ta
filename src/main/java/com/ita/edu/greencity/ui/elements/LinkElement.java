@@ -8,17 +8,21 @@ public class LinkElement extends BaseElement {
         super(driver, path);
     }
 
+
     public void click() {
         this.element.click();
     }
+
 
     public void clear() {
         this.element.clear();
     }
 
+
     public void sendKeys(String s) {
         this.element.sendKeys(s);
     }
+
 
     public String getAttribute(String attribute){
         return this.element.getAttribute(attribute);

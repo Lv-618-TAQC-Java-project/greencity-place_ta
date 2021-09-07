@@ -25,7 +25,10 @@ public class HeaderPage extends BasePage {
 
 
     public WebElement getSignInButton() {
-        return driver.findElement(HeaderLocator.SIGN_IN_BUTTON.getPath());
+        if (signInButton == null) {
+            signInButton = driver.findElement(HeaderLocator.SIGN_IN_BUTTON.getPath());
+        }
+        return signInButton;
     }
 
 
@@ -70,25 +73,28 @@ public class HeaderPage extends BasePage {
         return this;
     }
 
+
     public HeaderPage clickUserButton() {
         getUserButton().click();
         return this;
     }
+
 
     public UBSAdminCommon clickUbsAdminButton() {
         getUbsAdminButton().click();
         return new UBSAdminCommon(driver);
     }
 
-    public HeaderPage logInWithAdminCredentials() {
-        return new HeaderPage(driver).clickSignInButton()
+    public MySpacePage logIn(String email, String password) {
+        getHeaderPage()
+                .clickSignInButton()
                 .clearEmailField()
-                .setEmailField("howiv47374@nenekbet.com")
+                .setEmailField(email)
                 .clearPasswordField()
-                .setPasswordField("Test-User123")
+                .setPasswordField(password)
                 .clickSignInButton();
+        return new MySpacePage(driver);
     }
-
 
 }
 

@@ -4,8 +4,10 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-
 import java.util.concurrent.TimeUnit;
+import static io.github.bonigarcia.wdm.WebDriverManager.chromedriver;
+import static io.github.bonigarcia.wdm.WebDriverManager.firefoxdriver;
+
 
 public abstract class TestRunner {
 
@@ -15,12 +17,12 @@ public abstract class TestRunner {
     private void initializeDriver() {
         switch (propertiesProvider.getBrowser()) {
             case "chrome": {
-                System.setProperty("webdriver.chrome.driver", propertiesProvider.getChromeBrowser());
+                chromedriver().setup();
                 driver = new ChromeDriver();
                 break;
             }
             case "firefox": {
-                System.setProperty("webdriver.gecko.driver", propertiesProvider.getFirefoxBrowser());
+                firefoxdriver().setup();
                 driver = new FirefoxDriver();
                 break;
             }

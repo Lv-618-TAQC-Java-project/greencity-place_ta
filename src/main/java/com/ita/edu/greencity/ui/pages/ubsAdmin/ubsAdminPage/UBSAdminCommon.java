@@ -1,6 +1,6 @@
 package com.ita.edu.greencity.ui.pages.ubsAdmin.ubsAdminPage;
 
-import com.ita.edu.greencity.ui.locators.UBSAdminCommonLocator;
+import com.ita.edu.greencity.ui.locators.ubsAdminLocator.ubsAdminPageLocator.UBSAdminCommonLocator;
 import com.ita.edu.greencity.ui.locators.ubsAdminLocator.ubsAdminPageLocator.UBSAdminRowTableComponentLocator;
 import com.ita.edu.greencity.ui.locators.ubsAdminLocator.ubsAdminPageLocator.UBSAdminTableComponentLocator;
 import com.ita.edu.greencity.ui.pages.BasePage;
@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class UBSAdminCommon extends BasePage {
-    private USBAdminTableComponent usbAdminTableComponent;
+    private UBSAdminTableComponent ubsAdminTableComponent;
     private UBSAdminViewTableComponent ubsAdminViewTableComponent;
     private UBSAdminRowTableComponentLocator ubsAdminRowTableComponentLocator;
 
@@ -23,15 +23,18 @@ public class UBSAdminCommon extends BasePage {
     }
 
     public WebElement getSearchField() {
-        return driver.findElement(UBSAdminCommonLocator.SEARCH_FIELD.getPath());
+        searchField = driver.findElement(UBSAdminCommonLocator.SEARCH_FIELD.getPath());
+        return searchField;
     }
 
     public WebElement getSearchIcon() {
-        return driver.findElement(UBSAdminCommonLocator.SEARCH_ICON.getPath());
+        searchIcon = driver.findElement(UBSAdminCommonLocator.SEARCH_ICON.getPath());
+        return searchIcon;
     }
 
     public WebElement getViewTable() {
-        return driver.findElement(UBSAdminCommonLocator.VIEW_TABLE_BUTTON.getPath());
+        viewTable = driver.findElement(UBSAdminCommonLocator.VIEW_TABLE_BUTTON.getPath());
+        return viewTable;
     }
 
     public UBSAdminCommon clearSearchField() {
@@ -39,10 +42,14 @@ public class UBSAdminCommon extends BasePage {
         return this;
     }
 
-    public USBAdminRowTableComponent setSearchField(String s) {
+    public UBSAdminTableComponent getUbsAdminTableComponent() {
+        return new UBSAdminTableComponent(driver);
+    }
+
+    public UBSAdminCommon setSearchField(String s) {
         tableIsLoaded();
         getSearchField().sendKeys(s);
-        return new USBAdminRowTableComponent(driver);
+        return this;
     }
 
     public UBSAdminViewTableComponent clickViewTable() {
@@ -51,10 +58,10 @@ public class UBSAdminCommon extends BasePage {
         return new UBSAdminViewTableComponent(driver);
     }
 
-    public USBAdminTableComponent tableIsLoaded() {
+    public UBSAdminTableComponent tableIsLoaded() {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(UBSAdminTableComponentLocator.TABLE.getPath()));
-        return new USBAdminTableComponent(driver);
+        return new UBSAdminTableComponent(driver);
     }
 
 }
