@@ -55,4 +55,18 @@ public class ShcherbakovTests extends TestRunner {
 
         Assert.assertTrue(actual);
     }
+
+    @Test
+    public void verifyTotalOrderSum() throws InterruptedException {
+        String actual = new HomePage(driver)
+                .getHeaderPage()
+                .logIn()
+                .navigateToUBSAdminPage()
+                .clearSearchField()
+                .setSearchField("Weak")
+                .getTableRow()
+                .getTotalOrderSumText();
+
+        Assert.assertEquals(actual, "3400.00");
+    }
 }

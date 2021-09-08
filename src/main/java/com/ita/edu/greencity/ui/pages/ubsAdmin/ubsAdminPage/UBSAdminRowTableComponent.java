@@ -112,8 +112,8 @@ public final class UBSAdminRowTableComponent {
         return item.findElement(By.className("cdk-column-bo_bags_20_amount"));
     }
 
-    public WebElement getTotalOrderSum() {
-        return item.findElement(By.className("cdk-column-total_order_sum"));
+    public String getTotalOrderSumText() {
+        return item.findElement(UBSAdminRowTableComponentLocator.TOTAL_ORDER_SUM.getPath()).getText();
     }
 
     public WebElement getOrderCertificateCode() {
