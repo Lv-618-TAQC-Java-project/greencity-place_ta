@@ -42,6 +42,10 @@ public class HeaderPage extends BasePage {
         return driver.findElement(HeaderLocator.UBS_ADMIN_BUTTON.getPath());
     }
 
+    public WebElement getSignOutButton() {
+        return driver.findElement(HeaderLocator.SIGN_OUT_BUTTON.getPath());
+    }
+
 
     public WebElement getLanguageButton() {
         return driver.findElement(HeaderLocator.LANGUAGE_BUTTON.getPath());
@@ -86,6 +90,10 @@ public class HeaderPage extends BasePage {
         return new UBSAdminCommon(driver);
     }
 
+    public HomePage clickSignOutButton(){
+        getSignOutButton().click();
+        return new HomePage(driver);
+    }
     public MySpacePage logIn() {
         PropertiesProvider prop = new PropertiesProvider();
         getHeaderPage()
@@ -98,6 +106,12 @@ public class HeaderPage extends BasePage {
         return new MySpacePage(driver);
     }
 
+    public HomePage logOut(){
+        getHeaderPage()
+                .clickUserButton()
+                .clickSignOutButton();
+        return new HomePage(driver);
+    }
 }
 
 
