@@ -1,7 +1,7 @@
 package com.ita.edu.greencity.ui.pages.paymentPage;
 
 import com.ita.edu.greencity.ui.elements.LinkElement;
-import com.ita.edu.greencity.ui.locators.PaymentPageLocators;
+import com.ita.edu.greencity.ui.locators.payment.PaymentPageLocators;
 import com.ita.edu.greencity.ui.pages.BasePageObject;
 import org.openqa.selenium.WebDriver;
 
