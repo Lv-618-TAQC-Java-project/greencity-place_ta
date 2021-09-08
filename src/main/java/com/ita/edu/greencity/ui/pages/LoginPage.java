@@ -70,4 +70,5 @@ public class LoginPage extends BasePageObject{
         }
         return new HeaderPage(driver);
     }
+
 }

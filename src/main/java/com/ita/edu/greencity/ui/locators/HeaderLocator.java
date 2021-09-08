@@ -10,7 +10,8 @@ public enum HeaderLocator implements BaseLocator{
     UA_LANGUAGE_BUTTON(By.xpath("//span[text()='Ua']")),
     EN_LANGUAGE_BUTTON(By.xpath("//span[text()='En']")),
     USER_BUTTON(By.xpath("//a[@class='header_user-name']")),
-    UBS_ADMIN_BUTTON(By.xpath("//li[@role='navigation to ubs']"));
+    UBS_ADMIN_BUTTON(By.xpath("//li[@role='navigation to ubs']")),
+    UBS_COURIER_BUTTON(By.xpath("//*[contains(text(),'UBS courier')]"));
 
 
     private final By path;
