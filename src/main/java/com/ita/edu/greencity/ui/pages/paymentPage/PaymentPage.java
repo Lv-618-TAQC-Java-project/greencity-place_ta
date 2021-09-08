@@ -45,6 +45,16 @@ public class PaymentPage extends BasePageObject {
         return new ResultOfPaymentPage(driver);
     }
 
+    public PaymentPage clickPayButton() {
+        this.getPayButton().click();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return this;
+    }
+
     private LinkElement getContinueButton() {
         if (continueButton == null)
             continueButton = new LinkElement(driver, PaymentPageLocators.CONTINUE_BUTTON.getPath());
