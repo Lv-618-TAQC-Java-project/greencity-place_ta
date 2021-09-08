@@ -55,9 +55,13 @@ public class OrderDetailsPage extends BasePageObject {
         return this;
     }
     public OrderDetailsPage setNumberOfPackages(String oldClothes20,String oldClothes120,String recycledMaterial){
+        this.setNumberOfPackagesOldClothesVolume20Field(oldClothes20)
+                .setNumberOfPackagesOldClothesVolume120Field(oldClothes120)
+                .setNumberOfPackagesRecycledMaterialsVolume120(recycledMaterial);
         return this;
     }
     public PersonalDataPage clickNextButton() {
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         this.getNextButton().click();
         return new PersonalDataPage(driver);
     }

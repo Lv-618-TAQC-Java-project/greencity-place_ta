@@ -1,9 +1,11 @@
 package com.ita.edu.greencity.ui.pages.ubs_courier.order;
 
 import com.ita.edu.greencity.ui.elements.LinkElement;
-import com.ita.edu.greencity.ui.locators.ubs.courier.order.PersonalDataLocator;
+import com.ita.edu.greencity.ui.locators.ubs_courier.order.PersonalDataLocator;
 import com.ita.edu.greencity.ui.pages.BasePageObject;
 import org.openqa.selenium.WebDriver;
+
+import java.util.concurrent.TimeUnit;
 
 public class PersonalDataPage extends BasePageObject {
     private LinkElement nextButton;
@@ -47,6 +49,7 @@ public class PersonalDataPage extends BasePageObject {
     }
 
     public ConfirmationPage clickNextButton() {
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         this.getNextButton().click();
         return new ConfirmationPage(driver);
     }
@@ -60,10 +63,20 @@ public class PersonalDataPage extends BasePageObject {
     }
     public PersonalDataPage setPhoneNumberField(String s){
         this.getPhoneNumberField().sendKeys(s);
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return this;
     }
     public PersonalDataPage setEmailField(String s){
         this.getEmailField().sendKeys(s);
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return this;
     }
     public PersonalDataPage clearNameField(){
@@ -83,8 +96,7 @@ public class PersonalDataPage extends BasePageObject {
         return this;
     }
     public PersonalDataPage setPersonalData(String name,String surname,String phoneNumber,String email){
-        new PersonalDataPage(driver)
-                .clearNameField()
+                 this.clearNameField()
                 .setNameField(name)
                 .clearSurnameField()
                 .setSurnameField(surname)
@@ -93,13 +105,6 @@ public class PersonalDataPage extends BasePageObject {
                 .clearEmailField()
                 .setEmailField(email);
         return this;
-    }
-    public void waitPage() {
-        try {
-            Thread.sleep(4000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
 }

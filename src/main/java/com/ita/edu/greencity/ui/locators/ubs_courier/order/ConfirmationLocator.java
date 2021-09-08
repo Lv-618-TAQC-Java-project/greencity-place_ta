@@ -4,7 +4,7 @@ import com.ita.edu.greencity.ui.locators.BaseLocator;
 import org.openqa.selenium.By;
 
 public enum ConfirmationLocator implements BaseLocator {
-    ;
+    ORDER_BUTTON(By.xpath("//button[@class= 'primary-global-button btn']"));
     private final By path;
 
     ConfirmationLocator(By path) {
