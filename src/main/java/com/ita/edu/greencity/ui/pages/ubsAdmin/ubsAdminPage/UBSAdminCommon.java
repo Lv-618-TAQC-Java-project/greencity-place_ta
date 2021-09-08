@@ -51,7 +51,7 @@ public class UBSAdminCommon extends BasePage {
         return new UBSAdminTableComponent(driver);
     }
 
-    public UBSAdminRowTableComponent getUbsAdminRowTableComponent() {
+    public UBSAdminRowTableComponent getTableRow() {
         tableIsLoaded();
         return new UBSAdminRowTableComponent(driver, driver.findElement(UBSAdminTableComponentLocator.ROW.getPath()));
     }

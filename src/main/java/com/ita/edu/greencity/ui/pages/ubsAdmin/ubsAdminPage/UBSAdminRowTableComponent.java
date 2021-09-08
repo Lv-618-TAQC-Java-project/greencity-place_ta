@@ -18,16 +18,33 @@ public final class UBSAdminRowTableComponent {
         return driver.findElement(UBSAdminRowTableComponentLocator.CHECKBOX.getPath());
     }
 
+    public WebElement getTableHeadCheckbox() {
+        return driver.findElement(UBSAdminRowTableComponentLocator.TABLE_HEAD_CHECKBOX.getPath());
+    }
+
     public WebElement forCheckingCheckboxState() {
         return driver.findElement(UBSAdminRowTableComponentLocator.CHECKING_STATE_OF_CHECKBOX.getPath());
     }
 
-    public boolean isSelectedCheckBox() {
+    public WebElement forCheckingTableHeadCheckboxState() {
+        return driver.findElement(UBSAdminRowTableComponentLocator.CHECKING_STATE_OF_TABLE_HEAD_CHECKBOX.getPath());
+    }
+
+    public boolean isCheckBoxSelected() {
         return forCheckingCheckboxState().isSelected();
+    }
+
+    public boolean isTableHeadCheckBoxSelected() {
+        return forCheckingTableHeadCheckboxState().isSelected();
     }
 
     public UBSAdminRowTableComponent clickOnCheckbox() {
         getCheckbox().click();
+        return this;
+    }
+
+    public UBSAdminRowTableComponent clickTableHeadCheckbox() {
+        getTableHeadCheckbox().click();
         return this;
     }
 

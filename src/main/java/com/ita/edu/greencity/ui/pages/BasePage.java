@@ -18,7 +18,7 @@ public abstract class BasePage {
         return headerPage;
     }
 
-    public UBSAdminCommon navigateToUBSAdminCommon() {
+    public UBSAdminCommon navigateToUBSAdminPage() {
         driver.navigate().to("https://ita-social-projects.github.io/GreenCityClient/#/ubs-admin");
         return new UBSAdminCommon(driver);
     }

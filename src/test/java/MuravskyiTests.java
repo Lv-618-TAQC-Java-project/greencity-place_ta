@@ -1,6 +1,4 @@
-import com.ita.edu.greencity.ui.pages.HeaderPage;
 import com.ita.edu.greencity.ui.pages.HomePage;
-import com.ita.edu.greencity.ui.pages.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -29,10 +27,10 @@ public class MuravskyiTests extends TestRunner implements Repository {
         String result = new HomePage(driver)
                 .getHeaderPage()
                 .logIn()
-                .navigateToUBSAdminCommon()
+                .navigateToUBSAdminPage()
                 .clearSearchField()
                 .setSearchField("1504")
-                .getUbsAdminRowTableComponent()
+                .getTableRow()
                 .getAddressText();
         Assert.assertEquals(result, "Kiev, Tarasa Shevchenko Blvd, 8, 8,");
     }
@@ -48,7 +46,7 @@ public class MuravskyiTests extends TestRunner implements Repository {
         actual = new HomePage(driver)
                 .getHeaderPage()
                 .logIn()
-                .navigateToUBSAdminCommon()
+                .navigateToUBSAdminPage()
                 .clickViewTable()
                 .readAllCheckBoxNames(actual);
         System.out.println(actual);
@@ -66,7 +64,7 @@ public class MuravskyiTests extends TestRunner implements Repository {
         actual = new HomePage(driver)
                 .getHeaderPage()
                 .logIn()
-                .navigateToUBSAdminCommon()
+                .navigateToUBSAdminPage()
                 .clickViewTable()
                 .readAllCheckBoxNames(actual);
         System.out.println(actual);
