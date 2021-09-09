@@ -41,11 +41,10 @@ public final class UBSAdminRowTableComponent {
 
     public String getOrderDate() {
         return item.findElement(UBSAdminRowTableComponentLocator.ORDERDATE.getPath()).getText();
-        //return item.findElement(By.className("dk-column-order_date"));
     }
 
-    public WebElement getClientName() {
-        return item.findElement(By.className("cdk-column-clientname"));
+    public String getClientName() {
+        return item.findElement(UBSAdminRowTableComponentLocator.CLIENTNAME.getPath()).getText();
     }
 
     public WebElement getPhoneNumber() {

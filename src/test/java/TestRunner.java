@@ -55,14 +55,4 @@ public abstract class TestRunner {
         driver.get(propertiesProvider.getBaseUrl());
     }
 
-    @DataProvider
-    public static Object[][] orderDateDataProvider(){
-        Object[][] testData= new Object[][]{
-                {"1530", "08/09/2021"},
-                {"1531", "08/09/2021"},
-                {"1532", "08/09/2021"}
-
-        };
-        return testData;
-    }
 }
