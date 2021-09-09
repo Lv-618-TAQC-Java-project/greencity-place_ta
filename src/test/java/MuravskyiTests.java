@@ -32,7 +32,7 @@ public class MuravskyiTests extends TestRunner implements Repository {
                 .setSearchField("1504")
                 .getTableRow()
                 .getAddressText();
-        Assert.assertEquals(result, "Kiev, Tarasa Shevchenko Blvd, 8, 8,");
+        Assert.assertEquals(result, ADDRESSTQ221);
     }
 
     /**
@@ -50,7 +50,7 @@ public class MuravskyiTests extends TestRunner implements Repository {
                 .clickViewTable()
                 .readAllCheckBoxNames(actual);
         System.out.println(actual);
-        Assert.assertEquals(actual, expectedTQ224En);
+        Assert.assertEquals(actual, EXPECTEDTQ224EN);
     }
 
     /**
@@ -69,6 +69,24 @@ public class MuravskyiTests extends TestRunner implements Repository {
                 .clickViewTable()
                 .readAllCheckBoxNames(actual);
         System.out.println(actual);
-        Assert.assertEquals(actual, expectedTQ224UA);
+        Assert.assertEquals(actual, EXPECTEDTQ224UA);
+    }
+
+
+    /**
+     * TQ-236
+     * [UBS admin] Verify displaying comment of "Коментар до замовлення від клієнта" column
+     */
+    @Test
+    public void VerifyDisplayingCommentColumn() {
+        String result = new HomePage(driver)
+                .getHeaderPage()
+                .logIn()
+                .navigateToUBSAdminPage()
+                .clearSearchField()
+                .setSearchField("1548")
+                .getTableRow()
+                .getCommentToAddressText();
+        Assert.assertEquals(result, COMMENT_TO_ADDRESS_CELL_FOR_TQ236);
     }
 }

@@ -100,6 +100,10 @@ public final class UBSAdminRowTableComponent {
         return item.findElement(By.className("cdk-column-comment_to_address_for_client"));
     }
 
+    public String getCommentToAddressText() {
+        return item.findElement(UBSAdminRowTableComponentLocator.COMMENT_TO_ADDRESS_CELL.getPath()).getText();
+    }
+
     public WebElement getGarbageBags120Amount() {
         return item.findElement(By.className("cdk-column-garbage_bags_120_amount"));
     }

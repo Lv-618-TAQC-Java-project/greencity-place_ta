@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 
 public enum UBSAdminRowTableComponentLocator implements BaseLocator {
     ADDRESS_CELL(By.className("cdk-column-address")),
+    COMMENT_TO_ADDRESS_CELL(By.className("cdk-column-comment_for_order_by_client")),
     CHECKBOX(By.xpath("//tbody//div[@class='mat-checkbox-inner-container mat-checkbox-inner-container-no-side-margin']")),
     TABLE_HEAD_CHECKBOX(By.className("cdk-column-select")),
     CHECKING_STATE_OF_TABLE_HEAD_CHECKBOX(By.xpath("//div[@class='mat-checkbox-inner-container mat-checkbox-inner-container-no-side-margin']/input")),
