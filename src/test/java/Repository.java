@@ -25,6 +25,4 @@ public interface Repository {
                 {"howiv47374@nenekbet.com", "Test-User123"}
         };
     }
-
-
 }
