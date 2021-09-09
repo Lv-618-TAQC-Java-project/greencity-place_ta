@@ -5,6 +5,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
+
 import java.util.concurrent.TimeUnit;
 import static io.github.bonigarcia.wdm.WebDriverManager.chromedriver;
 import static io.github.bonigarcia.wdm.WebDriverManager.firefoxdriver;
@@ -51,5 +53,16 @@ public abstract class TestRunner {
     @BeforeMethod
     public void setUp() {
         driver.get(propertiesProvider.getBaseUrl());
+    }
+
+    @DataProvider
+    public static Object[][] orderDateDataProvider(){
+        Object[][] testData= new Object[][]{
+                {"1530", "08/09/2021"},
+                {"1531", "08/09/2021"},
+                {"1532", "08/09/2021"}
+
+        };
+        return testData;
     }
 }

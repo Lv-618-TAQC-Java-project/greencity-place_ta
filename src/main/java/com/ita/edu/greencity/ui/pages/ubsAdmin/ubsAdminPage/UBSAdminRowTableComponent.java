@@ -56,8 +56,9 @@ public final class UBSAdminRowTableComponent {
         return item.findElement(By.className("cdk-column-order_status"));
     }
 
-    public WebElement getOrderDate() {
-        return item.findElement(By.className("dk-column-order_date"));
+    public String getOrderDate() {
+        return item.findElement(UBSAdminRowTableComponentLocator.ORDERDATE.getPath()).getText();
+        //return item.findElement(By.className("dk-column-order_date"));
     }
 
     public WebElement getClientName() {
