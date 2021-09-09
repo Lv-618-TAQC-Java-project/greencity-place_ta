@@ -51,10 +51,10 @@ public class KovalchukTests extends TestRunner implements Repository{
         String actual = new HomePage(driver)
                 .getHeaderPage()
                 .logIn()
-                .navigateToUBSAdminCommon()
+                .navigateToUBSAdminPage()
                 .clearSearchField()
                 .setSearchField(input)
-                .getUbsAdminRowTableComponent()
+                .getTableRow()
                 .getClientName();
         if(actual.length() < 30){
              result = true;
