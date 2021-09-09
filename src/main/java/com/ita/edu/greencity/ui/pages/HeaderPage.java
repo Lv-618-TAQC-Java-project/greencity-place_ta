@@ -2,9 +2,9 @@ package com.ita.edu.greencity.ui.pages;
 
 import com.ita.edu.greencity.tools.PropertiesProvider;
 import com.ita.edu.greencity.ui.locators.HeaderLocator;
-import com.ita.edu.greencity.ui.pages.ubsAdmin.ubsAdminPage.UBSAdminCommon;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import com.ita.edu.greencity.ui.pages.ubsAdmin.ubsAdminPage.UBSAdminCommon;
 
 public class HeaderPage extends BasePage {
     private WebElement ecoNews;
