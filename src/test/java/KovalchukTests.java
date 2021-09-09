@@ -15,10 +15,10 @@ public class KovalchukTests extends TestRunner implements Repository{
         String result = new HomePage(driver)
                 .getHeaderPage()
                 .logIn()
-                .navigateToUBSAdminCommon()
+                .navigateToUBSAdminPage()
                 .clearSearchField()
                 .setSearchField(input)
-                .getUbsAdminRowTableComponent()
+                .getTableRow()
                 .getOrderDate();
 
         Assert.assertEquals(result, expected);
