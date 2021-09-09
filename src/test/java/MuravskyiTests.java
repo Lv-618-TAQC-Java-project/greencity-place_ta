@@ -63,6 +63,7 @@ public class MuravskyiTests extends TestRunner implements Repository {
         List<String> actual = new ArrayList<>();
         actual = new HomePage(driver)
                 .getHeaderPage()
+                .chooseLanguageUa()
                 .logIn()
                 .navigateToUBSAdminPage()
                 .clickViewTable()
