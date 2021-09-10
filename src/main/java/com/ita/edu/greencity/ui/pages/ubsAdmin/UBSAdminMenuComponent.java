@@ -43,7 +43,7 @@ public class UBSAdminMenuComponent extends BasePage {
         return new UBSAdminCertificates(driver);
     }
 
-    public UBSAdminOrders clickOrdersButton() {
+    public UBSAdminOrders getUBSAdminOrders() {
         ordersButton.click();
         try {
             Thread.sleep(2000);

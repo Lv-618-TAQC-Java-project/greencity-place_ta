@@ -1,9 +1,10 @@
-package com.ita.edu.greencity.ui.pages.ubs_courier.order;
+package com.ita.edu.greencity.ui.pages.ubsCourier.order;
 
 import com.ita.edu.greencity.ui.elements.LinkElement;
-import com.ita.edu.greencity.ui.locators.ubs_courier.order.PersonalDataLocator;
+import com.ita.edu.greencity.ui.locators.ubsCourier.order.PersonalDataLocator;
 import com.ita.edu.greencity.ui.pages.BasePage;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import java.util.concurrent.TimeUnit;
 
@@ -13,6 +14,7 @@ public class PersonalDataPage extends BasePage {
     private LinkElement surnameField;
     private LinkElement phoneNumberField;
     private LinkElement emailField;
+    private WebElement firstGarbageAddressButton;
 
     public PersonalDataPage(WebDriver driver) {
         super(driver);
@@ -107,4 +109,25 @@ public class PersonalDataPage extends BasePage {
         return this;
     }
 
+    public WebElement getFirstGarbageAddressButton() {
+        if (firstGarbageAddressButton == null){
+            return firstGarbageAddressButton = driver.findElement(PersonalDataLocator.FIRST_GARBAGE_ADDRESS_BUTTON.getPath());
+        }
+        return firstGarbageAddressButton;
+    }
+
+    public PersonalDataPage clickOnFirstGarbageAddressButton(){
+        getFirstGarbageAddressButton().click();
+        return this;
+    }
+
+    public ConfirmationPage setPersonalData(){
+        clearEmailField()
+                .setEmailField("testmail@mail.com")
+                .clickOnFirstGarbageAddressButton()
+                .clearNameField()
+                .setNameField("ThisNameIsForTest")
+                .clickNextButton();
+        return new ConfirmationPage(driver);
+    }
 }

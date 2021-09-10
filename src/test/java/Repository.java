@@ -18,11 +18,4 @@ public interface Repository {
             "Дата вивезення", "Час вивезення", "Станція приймання", "№ замовлення з магазину", "ВІдповідальний менеджер", "Відповідальний логіст", "ВІдповідальний кур’єр",
             "ВІдповідальний штурман", "ВІдповідальний штурман"));
 
-
-    @DataProvider(name = "adminCredentials")
-    static Object[][] adminCredentials() {
-        return new Object[][]{
-                {"howiv47374@nenekbet.com", "Test-User123"}
-        };
-    }
 }

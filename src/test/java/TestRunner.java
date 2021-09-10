@@ -1,15 +1,17 @@
 import com.ita.edu.greencity.tools.PropertiesProvider;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.opera.OperaDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 
 import java.util.concurrent.TimeUnit;
-import static io.github.bonigarcia.wdm.WebDriverManager.chromedriver;
-import static io.github.bonigarcia.wdm.WebDriverManager.firefoxdriver;
+
+import static io.github.bonigarcia.wdm.WebDriverManager.*;
 
 
 public abstract class TestRunner {
@@ -29,6 +31,16 @@ public abstract class TestRunner {
                 driver = new FirefoxDriver();
                 break;
             }
+            case "opera": {
+                operadriver().setup();
+                driver = new OperaDriver();
+                break;
+            }
+            case "edge": {
+                edgedriver().setup();
+                driver = new EdgeDriver();
+                break;
+            }
             default: {
                 throw new IllegalArgumentException("Invalid browser");
             }
@@ -45,10 +57,10 @@ public abstract class TestRunner {
 
     }
 
-    @AfterClass
-    public void afterClass() {
-        if (driver != null) driver.quit();
-    }
+//    @AfterClass
+//    public void afterClass() {
+//        if (driver != null) driver.quit();
+//    }
 
     @BeforeMethod
     public void setUp() {

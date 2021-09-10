@@ -1,42 +1,39 @@
 package com.ita.edu.greencity.ui.pages.paymentPage;
 
-import com.ita.edu.greencity.ui.elements.LinkElement;
+
 import com.ita.edu.greencity.ui.locators.payment.PaymentPageLocators;
 import com.ita.edu.greencity.ui.pages.BasePage;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class PaymentPage extends BasePage {
 
-    private LinkElement numberOfCard;
-    private LinkElement dateOfTheEndCard;
-    private LinkElement cvvOfCard;
-    private LinkElement email;
-    private LinkElement pay;
-    private LinkElement continueButton;
+    private WebElement numberOfCard;
+    private WebElement dateOfTheEndCard;
+    private WebElement cvvOfCard;
+    private WebElement email;
+    private WebElement pay;
+    private WebElement continueButton;
 
     public PaymentPage(WebDriver driver) {
         super(driver);
     }
 
-    private LinkElement getNumberOfCard() {
-        if (numberOfCard == null)
-            numberOfCard = new LinkElement(driver, PaymentPageLocators.NUMBER_OF_THE_CARD_INPUT.getPath());
-        return numberOfCard;
+    private WebElement getNumberOfCard() {
+        return driver.findElement(PaymentPageLocators.NUMBER_OF_THE_CARD_INPUT.getPath());
     }
 
     public PaymentPage setNumberOfCard(String number) {
-        this.getNumberOfCard().sendKeys(number);
+        getNumberOfCard().sendKeys(number);
         return this;
     }
 
-    private LinkElement getPayButton() {
-        if (pay == null)
-            pay = new LinkElement(driver, PaymentPageLocators.PAY_BUTTON.getPath());
-        return pay;
+    private WebElement getPayButton() {
+        return driver.findElement(PaymentPageLocators.PAY_BUTTON.getPath());
     }
 
     public ResultOfPaymentPage clickContinueButton() {
-        this.getContinueButton().click();
+        getContinueButton().click();
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
@@ -46,7 +43,7 @@ public class PaymentPage extends BasePage {
     }
 
     public PaymentPage clickPayButton() {
-        this.getPayButton().click();
+        getPayButton().click();
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
@@ -55,53 +52,45 @@ public class PaymentPage extends BasePage {
         return this;
     }
 
-    private LinkElement getContinueButton() {
-        if (continueButton == null)
-            continueButton = new LinkElement(driver, PaymentPageLocators.CONTINUE_BUTTON.getPath());
-        return continueButton;
+    private WebElement getContinueButton() {
+        return driver.findElement(PaymentPageLocators.CONTINUE_BUTTON.getPath());
     }
 
-    private LinkElement getDateOfTheEndCard() {
-        if (dateOfTheEndCard == null)
-            dateOfTheEndCard = new LinkElement(driver, PaymentPageLocators.DATE_OF_THE_END_OF_THE_CARD.getPath());
-        return dateOfTheEndCard;
+    private WebElement getDateOfTheEndCard() {
+        return driver.findElement(PaymentPageLocators.DATE_OF_THE_END_OF_THE_CARD.getPath());
     }
 
     public PaymentPage setDateOfTheEndCard(String date) {
-        this.getDateOfTheEndCard().sendKeys(date);
+       getDateOfTheEndCard().sendKeys(date);
         return this;
     }
 
-    private LinkElement getCvvOfCard() {
-        if (cvvOfCard == null)
-            cvvOfCard = new LinkElement(driver, PaymentPageLocators.CVV_OF_CARD_INPUT.getPath());
-        return cvvOfCard;
+    private WebElement getCvvOfCard() {
+        return driver.findElement(PaymentPageLocators.CVV_OF_CARD_INPUT.getPath());
     }
 
     public PaymentPage setCvvOfCard(String cvv) {
-        this.getCvvOfCard().sendKeys(cvv);
+        getCvvOfCard().sendKeys(cvv);
         return this;
     }
 
     public PaymentPage clearNumberOfCardField() {
-        this.getNumberOfCard().clear();
+        getNumberOfCard().clear();
         return this;
     }
 
     public PaymentPage clearDateOfTheEndCardField() {
-        this.getDateOfTheEndCard().clear();
+        getDateOfTheEndCard().clear();
         return this;
     }
 
     public PaymentPage clearCvvOfCardField() {
-        this.getCvvOfCard().clear();
+        getCvvOfCard().clear();
         return this;
     }
 
-    private LinkElement getEmail() {
-        if (email == null)
-            email = new LinkElement(driver, PaymentPageLocators.EMAIL_FIELD.getPath());
-        return email;
+    private WebElement getEmail() {
+        return driver.findElement(PaymentPageLocators.EMAIL_FIELD.getPath());
     }
 
     public PaymentPage setEmail(String email) {
@@ -114,5 +103,13 @@ public class PaymentPage extends BasePage {
         return this;
     }
 
-
+    public ResultOfPaymentPage setSuccessfulPaymentCredits(){
+        setCvvOfCard("123")
+                .setDateOfTheEndCard("1224")
+                .setNumberOfCard("4444555566661111")
+                .setEmail("testmail@mail.com")
+                .clickPayButton()
+                .clickContinueButton();
+        return new ResultOfPaymentPage(driver);
+    }
 }

@@ -1,9 +1,9 @@
-package com.ita.edu.greencity.ui.pages.ubs_courier;
+package com.ita.edu.greencity.ui.pages.ubsCourier;
 
 import com.ita.edu.greencity.ui.elements.LinkElement;
-import com.ita.edu.greencity.ui.locators.ubs_courier.UBSCourierLocator;
+import com.ita.edu.greencity.ui.locators.ubsCourier.UBSCourierLocator;
 import com.ita.edu.greencity.ui.pages.BasePage;
-import com.ita.edu.greencity.ui.pages.ubs_courier.order.OrderDetailsPage;
+import com.ita.edu.greencity.ui.pages.ubsCourier.order.OrderDetailsPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
@@ -27,6 +27,8 @@ public class ubsCourierPage extends BasePage {
 
     public OrderDetailsPage clickCallUpTheCourierButton() {
         getCallUpTheCourierButton().click();
+
         return new OrderDetailsPage(driver);
     }
+
 }

@@ -1,4 +1,4 @@
-package com.ita.edu.greencity.ui.locators.ubs_courier;
+package com.ita.edu.greencity.ui.locators.ubsCourier;
 
 import com.ita.edu.greencity.ui.locators.BaseLocator;
 import org.openqa.selenium.By;
