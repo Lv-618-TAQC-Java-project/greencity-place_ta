@@ -2,6 +2,7 @@ package com.ita.edu.greencity.ui.pages.paymentPage;
 
 import com.ita.edu.greencity.ui.locators.payment.PaymentPageLocators;
 import com.ita.edu.greencity.ui.pages.BasePage;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -32,7 +33,8 @@ public class PaymentPage extends BasePage {
     }
 
     public ResultOfPaymentPage clickContinueButton() {
-        getContinueButton().click();
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("setTimeout(function(){ $('button').trigger('click'); }, 1000);");
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
@@ -51,9 +53,6 @@ public class PaymentPage extends BasePage {
         return this;
     }
 
-    private WebElement getContinueButton() {
-        return driver.findElement(PaymentPageLocators.CONTINUE_BUTTON.getPath());
-    }
 
     private WebElement getDateOfTheEndCard() {
         return driver.findElement(PaymentPageLocators.DATE_OF_THE_END_OF_THE_CARD.getPath());
