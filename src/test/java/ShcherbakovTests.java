@@ -14,6 +14,8 @@ public class ShcherbakovTests extends TestRunner {
                 .getHeaderPage()
                 .logIn()
                 .navigateToUBSAdminPage()
+                .getAdminMenu()
+                .getUBSAdminOrders()
                 .getTableRow()
                 .clickOnCheckbox()
                 .isCheckBoxSelected();
@@ -27,6 +29,8 @@ public class ShcherbakovTests extends TestRunner {
                 .getHeaderPage()
                 .logIn()
                 .navigateToUBSAdminPage()
+                .getAdminMenu()
+                .getUBSAdminOrders()
                 .getTableRow()
                 .clickTableHeadCheckbox()
                 .isTableHeadCheckBoxSelected();
@@ -43,6 +47,8 @@ public class ShcherbakovTests extends TestRunner {
                 .getHeaderPage()
                 .logIn()
                 .navigateToUBSAdminPage()
+                .getAdminMenu()
+                .getUBSAdminOrders()
                 .getTableRow()
                 .clickTableHeadCheckbox()
                 .isTableHeadCheckBoxSelected();
@@ -62,11 +68,13 @@ public class ShcherbakovTests extends TestRunner {
                 .getHeaderPage()
                 .logIn()
                 .navigateToUBSAdminPage()
+                .getAdminMenu()
+                .getUBSAdminOrders()
                 .clearSearchField()
-                .setSearchField("Weak")
+                .setSearchField("1582")
                 .getTableRow()
                 .getTotalOrderSumText();
 
-        Assert.assertEquals(actual, "3400.00");
+        Assert.assertEquals(actual, "7000.00");
     }
 }
