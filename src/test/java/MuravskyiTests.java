@@ -28,6 +28,8 @@ public class MuravskyiTests extends TestRunner implements Repository {
                 .getHeaderPage()
                 .logIn()
                 .navigateToUBSAdminPage()
+                .getAdminMenu()
+                .getUBSAdminOrders()
                 .clearSearchField()
                 .setSearchField("1504")
                 .getTableRow()
@@ -47,6 +49,8 @@ public class MuravskyiTests extends TestRunner implements Repository {
                 .getHeaderPage()
                 .logIn()
                 .navigateToUBSAdminPage()
+                .getAdminMenu()
+                .getUBSAdminOrders()
                 .clickViewTable()
                 .readAllCheckBoxNames(actual);
         System.out.println(actual);
@@ -66,6 +70,8 @@ public class MuravskyiTests extends TestRunner implements Repository {
                 .chooseLanguageUa()
                 .logIn()
                 .navigateToUBSAdminPage()
+                .getAdminMenu()
+                .getUBSAdminOrders()
                 .clickViewTable()
                 .readAllCheckBoxNames(actual);
         System.out.println(actual);
@@ -83,6 +89,8 @@ public class MuravskyiTests extends TestRunner implements Repository {
                 .getHeaderPage()
                 .logIn()
                 .navigateToUBSAdminPage()
+                .getAdminMenu()
+                .getUBSAdminOrders()
                 .clearSearchField()
                 .setSearchField("1548")
                 .getTableRow()
