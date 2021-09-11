@@ -3,6 +3,7 @@ package com.ita.edu.greencity.ui.pages;
 import com.ita.edu.greencity.tools.PropertiesProvider;
 import com.ita.edu.greencity.ui.locators.HeaderLocator;
 import com.ita.edu.greencity.ui.pages.ubsAdmin.ubsAdminPage.UBSAdminCommon;
+import com.ita.edu.greencity.ui.pages.ubsCourier.UBSCourierPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -66,6 +67,10 @@ public class HeaderPage extends BasePage {
         return driver.findElement(HeaderLocator.EN_LANGUAGE_BUTTON.getPath());
     }
 
+    public WebElement getUbsCourierButton() {
+        return driver.findElement(HeaderLocator.UBS_COURIER_BUTTON.getPath());
+    }
+
     public LoginPage clickSignInButton() {
         getSignInButton().click();
         return new LoginPage(driver);
@@ -111,6 +116,10 @@ public class HeaderPage extends BasePage {
                 .clickUserButton()
                 .clickSignOutButton();
         return new HomePage(driver);
+    }
+    public UBSCourierPage clickUbsCourierButton(){
+        getUbsCourierButton().click();
+        return new UBSCourierPage(driver);
     }
 }
 

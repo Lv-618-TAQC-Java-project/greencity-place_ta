@@ -11,7 +11,9 @@ public enum HeaderLocator implements BaseLocator{
     EN_LANGUAGE_BUTTON(By.xpath("//span[text()='En']")),
     USER_BUTTON(By.xpath("//a[@class='header_user-name']")),
     UBS_ADMIN_BUTTON(By.xpath("//li[@role='navigation to ubs']")),
-    SIGN_OUT_BUTTON(By.xpath("//li[@aria-label='sign-out']"));
+    SIGN_OUT_BUTTON(By.xpath("//li[@aria-label='sign-out']")),
+    UBS_COURIER_BUTTON(By.xpath("//*[contains(text(),'UBS courier')]"));
+
 
 
     private final By path;
