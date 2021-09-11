@@ -35,5 +35,9 @@ public class PropertiesProvider {
         return prop.getProperty("adminPassword");
     }
 
+    public String getDataBaseURL(){return prop.getProperty("URL");}
 
+    public String getDataBaseUserName(){return prop.getProperty("USERNAME");}
+
+    public String getDataBasePassword(){return prop.getProperty("PASSWORD");}
 }
