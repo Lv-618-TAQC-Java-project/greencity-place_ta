@@ -36,14 +36,17 @@ public class OrderDetailsPage extends BasePage {
     }
 
     public OrderDetailsPage setNumberOfPackagesOldClothesVolume20Field(String number) {
+        this.getNumberOfPackagesOldClothesVolume20Input().clear();
         this.getNumberOfPackagesOldClothesVolume20Input().sendKeys(number);
         return this;
     }
     public OrderDetailsPage setNumberOfPackagesOldClothesVolume120Field(String number) {
+        this.getNumberOfPackagesOldClothesVolume120Input().clear();
         this.getNumberOfPackagesOldClothesVolume120Input().sendKeys(number);
         return this;
     }
     public OrderDetailsPage setNumberOfPackagesRecycledMaterialsVolume120(String number) {
+        this.getNumberOfPackagesRecycledMaterialsVolume120().clear();
         this.getNumberOfPackagesRecycledMaterialsVolume120().sendKeys(number);
         return this;
     }

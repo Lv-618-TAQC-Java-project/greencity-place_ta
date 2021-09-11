@@ -18,22 +18,18 @@ public class ConfirmationPage extends BasePage {
     public WebElement getOrderButton() {
         return driver.findElement(ConfirmationLocator.ORDER_BUTTON.getPath());
     }
+
     public ConfirmationPage clickOrderButton(){
         this.getOrderButton().click();
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         return new ConfirmationPage(driver);
     }
     public PaymentPage acceptAlert(){
-        driver.switchTo().alert().accept();
         try {
-            Thread.sleep(2000);
+            Thread.sleep(4000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        driver.switchTo().alert().accept();
         return new PaymentPage(driver);
     }
 }
