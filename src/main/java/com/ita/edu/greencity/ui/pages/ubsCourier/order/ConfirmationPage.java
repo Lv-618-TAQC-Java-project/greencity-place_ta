@@ -1,14 +1,10 @@
 package com.ita.edu.greencity.ui.pages.ubsCourier.order;
 
-import com.ita.edu.greencity.ui.elements.LinkElement;
-import com.ita.edu.greencity.ui.locators.ubsCourier.UBSCourierLocator;
 import com.ita.edu.greencity.ui.locators.ubsCourier.order.ConfirmationLocator;
 import com.ita.edu.greencity.ui.pages.BasePage;
-import com.ita.edu.greencity.ui.pages.paymentPage.PaymentPage;
+import com.ita.edu.greencity.ui.pages.payment.PaymentPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
-import java.util.concurrent.TimeUnit;
 
 public class ConfirmationPage extends BasePage {
 

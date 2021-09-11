@@ -1,4 +1,4 @@
-package com.ita.edu.greencity.ui.pages.paymentPage;
+package com.ita.edu.greencity.ui.pages.payment;
 
 import com.ita.edu.greencity.ui.locators.payment.PaymentPageLocators;
 import com.ita.edu.greencity.ui.pages.BasePage;
