@@ -27,6 +27,11 @@ public class UBSCourierPage extends BasePage {
 
     public OrderDetailsPage clickCallUpTheCourierButton() {
         getCallUpTheCourierButton().click();
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return new OrderDetailsPage(driver);
     }
 }
