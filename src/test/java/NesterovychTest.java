@@ -126,12 +126,5 @@ public class NesterovychTest extends TestRunner{
         Assert.assertEquals(actualEmail, expectedEmail);
     }
 
-    @AfterMethod
-    public void toQuit() {
-        driver.get(propertiesProvider.getBaseUrl());
-        new HomePage(driver)
-                .getHeaderPage()
-                .logOut();
-    }
 
 }
