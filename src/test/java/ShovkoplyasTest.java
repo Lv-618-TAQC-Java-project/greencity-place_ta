@@ -1,9 +1,7 @@
 import com.ita.edu.greencity.tools.jdbc.DataBaseConnection;
 import com.ita.edu.greencity.ui.pages.HomePage;
-import com.ita.edu.greencity.ui.pages.ubsAdmin.ubsAdminPage.UBSAdminRowTableComponent;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
@@ -152,46 +150,52 @@ public class ShovkoplyasTest extends TestRunner{
 
         db.closeConnection();
     }
-//    @Test
-//    public void VerifyRecipientsName() {
-        //create new order
-//        new HomePage(driver)
-//                .getHeaderPage()
-//                .logIn()
-//                .getHeaderPage()
-//                .clickUbsCourierButton()
-//                .clickCallUpTheCourierButton().setNumberOfPackages("2", "2", "2")
-//                .clickNextButton()
-//                .setPersonalData(USER_NAME, USER_LAST_NAME, USER_PHONE_NUMBER,USER_EMAIL )
-//                .clickNextButton()
-//                .clickOrderButton()
-//                .acceptAlert()
-//                .setNumberOfCard(CARD_NUMBER)
-//                .setCvvOfCard(CVV)
-//                .setDateOfTheEndCard(CARD_EXPIRE)
-//                .setEmail(USER_EMAIL)
-//                .clickPayButton()
-//                .clickContinueButton();
-//        //get user
-//
-//
-//        DataBaseConnection dataBase = new DataBaseConnection();
-//        dataBase.connectionToDataBase();
-//
-//
-//
-//        dataBase.DeleteOrderFromAllTable(
-//                dataBase.findOrderId(USER_NAME, USER_LAST_NAME, USER_PHONE_NUMBER_FOR_DB,USER_EMAIL));
-//
-//        dataBase.closeConnection();
-//    }
-        @AfterMethod
-        public void toQuit () {
-            driver.get(propertiesProvider.getBaseUrl());
-            new HomePage(driver)
-                    .getHeaderPage()
-                    .logOut();
-        }
+    @Test
+    public void VerifyRecipientsName() {
+        new HomePage(driver)
+                .getHeaderPage()
+                .logIn()
+                .getHeaderPage()
+                .clickUbsCourierButton()
+                .clickCallUpTheCourierButton().setNumberOfPackages("2", "2", "2")
+                .clickNextButton()
+                .setPersonalData(USER_NAME, USER_LAST_NAME, USER_PHONE_NUMBER,USER_EMAIL )
+                .clickNextButton()
+                .clickOrderButton()
+                .acceptAlert()
+                .setNumberOfCard(CARD_NUMBER)
+                .setCvvOfCard(CVV)
+                .setDateOfTheEndCard(CARD_EXPIRE)
+                .setEmail(USER_EMAIL)
+                .clickPayButton()
+                .clickContinueButton();
+        //get user
+
+        DataBaseConnection dataBase = new DataBaseConnection();
+        dataBase.connectionToDataBase();
+        String [] idAndOrderId = dataBase.findOrderId(USER_NAME, USER_LAST_NAME, USER_PHONE_NUMBER_FOR_DB,USER_EMAIL);
+        String orderId = idAndOrderId[0];
+
+        String executeQuery = "select first_name from ubs_user where id = '" + orderId +"';";
+        String actualFirstName = dataBase.getElementFromTable(executeQuery);
+        String expecterFirstName = USER_NAME;
+        System.out.println(actualFirstName);
+        System.out.println(expecterFirstName);
+
+        dataBase.DeleteOrderFromAllTable(idAndOrderId);
+
+        dataBase.closeConnection();
+
+        Assert.assertEquals(actualFirstName, expecterFirstName);
+    }
+
+    @AfterMethod
+    public void toQuit() {
+        driver.get(propertiesProvider.getBaseUrl());
+        new HomePage(driver)
+                .getHeaderPage()
+                .logOut();
+    }
 
 
 }
