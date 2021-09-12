@@ -12,7 +12,8 @@ public enum UBSAdminCommonLocator implements BaseLocator {
     DISPLAY_COUNTER_10(By.xpath("//select[@class = 'display-counter']//option[contains(text(),'10')]")),
     DISPLAY_COUNTER_15(By.xpath("//select[@class = 'display-counter']//option[contains(text(),'15')]")),
     DISPLAY_COUNTER_20(By.xpath("//select[@class = 'display-counter']//option[contains(text(),'20')]")),
-    SORT_ORDER_NUMBER_BUTTON(By.xpath("//span[text()='orderid']/following-sibling::span/mat-icon"));
+    SORT_ORDER_NUMBER_BUTTON(By.xpath("//span[text()='orderid']/following-sibling::span/mat-icon")),
+    SORT_DISTRICT_BUTTON(By.xpath("//mat-header-cell[9]/div/span[2]/mat-icon"));
 
     private final By path;
 
