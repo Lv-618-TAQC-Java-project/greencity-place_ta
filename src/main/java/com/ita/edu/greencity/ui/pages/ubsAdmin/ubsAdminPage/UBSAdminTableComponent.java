@@ -3,7 +3,8 @@ package com.ita.edu.greencity.ui.pages.ubsAdmin.ubsAdminPage;
 import com.ita.edu.greencity.ui.locators.ubsAdminLocator.ubsAdminPageLocator.UBSAdminTableComponentLocator;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
+import com.ita.edu.greencity.ui.pages.ubsAdmin.ubsAdminPage.UBSAdminRowTableComponent;
+import com.ita.edu.greencity.ui.pages.ubsAdmin.ubsAdminPage.UBSAdminCommon;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,6 +41,15 @@ public class UBSAdminTableComponent extends UBSAdminCommon {
         return rows;
     }
 
-
+    public UBSAdminRowTableComponent getRowById(String id){
+        getRows();
+        if(rows.size() == 0)
+            return null;
+        for (UBSAdminRowTableComponent row : rows) {
+            if (row.getOrderIdText().equals(id))
+                return row;
+        }
+        return null;
+    }
 
 }

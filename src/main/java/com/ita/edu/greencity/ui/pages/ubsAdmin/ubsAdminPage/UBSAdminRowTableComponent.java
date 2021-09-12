@@ -116,21 +116,40 @@ public final class UBSAdminRowTableComponent {
         return item.findElement(By.className("cdk-column-bo_bags_20_amount"));
     }
 
+    public WebElement getTotalOrderSum() {
+        return item.findElement(UBSAdminRowTableComponentLocator.TOTAL_ORDER_SUM.getPath());
+    }
+
     public String getTotalOrderSumText() {
         return item.findElement(UBSAdminRowTableComponentLocator.TOTAL_ORDER_SUM.getPath()).getText();
     }
+
+    public long getTotalOrderSumValue() {
+        return Long.parseLong(getTotalOrderSumText());
+    }
+
+
 
     public WebElement getOrderCertificateCode() {
         return item.findElement(By.className("cdk-column-order_certificate_code"));
     }
 
     public WebElement getOrderCertificatePoints() {
-        return item.findElement(By.className("cdk-column-order_certificate_points"));
+        return item.findElement(UBSAdminRowTableComponentLocator.ORDER_CERTIFICATE_POINTS.getPath());
+    }
+
+    public Long getOrderCertificatePointsValue() {
+        return Long.parseLong(getOrderCertificatePoints().getText());
     }
 
     public WebElement getAmountDue() {
-        return item.findElement(By.className("cdk-column-amount_due"));
+        return item.findElement(UBSAdminRowTableComponentLocator.AMOUNT_DUE.getPath());
     }
+
+    public long getAmountDueValue() {
+        return Long.parseLong(getAmountDue().getText());
+    }
+
 
     public WebElement getCommentForOrderByClient() {
         return item.findElement(By.className("cdk-column-comment_for_order_by_client"));
