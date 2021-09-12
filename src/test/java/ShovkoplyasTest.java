@@ -1,50 +1,127 @@
-import com.ita.edu.greencity.tools.jdbc.DataBaseConnection;
 import com.ita.edu.greencity.ui.pages.HomePage;
+import com.ita.edu.greencity.ui.pages.ubsAdmin.ubsAdminPage.UBSAdminRowTableComponent;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class ShovkoplyasTest extends TestRunner {
+import java.util.ArrayList;
+import java.util.List;
+
+public class ShovkoplyasTest extends TestRunner{
+    private final int DISPLAY_COUNTER_10 = 10;
+    private final int DISPLAY_COUNTER_15 = 15;
+    private final int DISPLAY_COUNTER_20 = 20;
     @Test
-    public void testSortingDescending(){
-        DataBaseConnection b = new DataBaseConnection();
-
-
-        int order_id = 1595;
-        String userName = "TestNameVolodumur";
-        String last_name = "TestSurnameVolodumur";
-        String phone_number = "+380938111111";
-        String executeSearchId = "select id from ubs_user where first_name = '"+userName+"' and last_name ='"+last_name+"' and phone_number = '"+phone_number+"' limit 1;";
-        //String result = b.SelectStatement(executeSearchId);
-
-        String str = "select id from orders where id='"+order_id+"';";
-        String order_bag_mapping = "DELETE FROM order_bag_mapping WHERE order_id ='"+order_id+"';";
-        String order_additional = "delete from order_additional  where orders_id ='"+order_id+"';";
-        String certificate = "delete from certificate where order_id ='"+order_id+"';";
-        String order_employee = "delete from order_employee where order_id ='"+order_id+"';";
-        String payment = "delete from payment where order_id ='"+order_id+"';";
-        String MainDeleteOrders = "delete from orders where id ='"+order_id+"';";
-        new HomePage(driver)
+    public void TestFunctionalityOfDisplayCounterWith10Rows(){
+        List<String> arr = new ArrayList<>();
+        arr = new HomePage(driver)
                 .getHeaderPage()
                 .logIn()
                 .getHeaderPage()
-                .clickUbsCourierButton()
-                .clickCallUpTheCourierButton().setNumberOfPackages("2", "2", "2")
-                .clickNextButton()
-                .setPersonalData(userName,"TestSurnameVolodumur","0938111111","TestEmail@test.com")
-                .clickNextButton()
-                .clickOrderButton()
-                .acceptAlert()
-                .setNumberOfCard("4444555566661111")
-                .setCvvOfCard("123")
-                .setDateOfTheEndCard("1224")
-                .setEmail("testEmailCard@gmail.com")
-                .clickPayButton()
-                .clickContinueButton();
-        b.SelectStatement(executeSearchId);
-//        b.SelectStatement(order_additional);
-//        b.SelectStatement(certificate);
-//        b.SelectStatement(order_employee);
-//        b.SelectStatement(payment);
-//        b.SelectStatement(MainDeleteOrders);
-        //b.SelectStatement(str);
+                .clickUserButton()
+                .clickUbsAdminButton()
+                .getAdminMenu()
+                .getUBSAdminOrders()
+                .getUbsAdminTableComponent()
+                .getColumnOrderID();
+        int actualSize = arr.toArray().length;
+        Assert.assertEquals(actualSize, DISPLAY_COUNTER_10);
+    }
+    @Test
+    public void TestFunctionalityOfDisplayCounterWith15Rows(){
+        List<String> arr = new ArrayList<>();
+        arr = new HomePage(driver)
+                .getHeaderPage()
+                .logIn()
+                .getHeaderPage()
+                .clickUserButton()
+                .clickUbsAdminButton()
+                .getAdminMenu()
+                .getUBSAdminOrders()
+                .clickDisplayCounterDropdown()
+                .clickDisplayCounter15()
+                .getUbsAdminTableComponent()
+                .getColumnOrderID();
+        int actualSize = arr.toArray().length;
+        Assert.assertEquals(actualSize, DISPLAY_COUNTER_15);
+    }
+    @Test
+    public void TestFunctionalityOfDisplayCounterWith20Rows(){
+        List<String> arr = new ArrayList<>();
+        arr = new HomePage(driver)
+                .getHeaderPage()
+                .logIn()
+                .getHeaderPage()
+                .clickUserButton()
+                .clickUbsAdminButton()
+                .getAdminMenu()
+                .getUBSAdminOrders()
+                .clickDisplayCounterDropdown()
+                .clickDisplayCounter20()
+                .getUbsAdminTableComponent()
+                .getColumnOrderID();
+        int actualSize = arr.toArray().length;
+        Assert.assertEquals(actualSize, DISPLAY_COUNTER_20);
+    }
+    @Test
+    public void VerifyIsDefaultDescSortingOfColumnOrderNumber(){
+        List<String> arr = new ArrayList<>();
+        arr = new HomePage(driver)
+                .getHeaderPage()
+                .logIn()
+                .getHeaderPage()
+                .clickUserButton()
+                .clickUbsAdminButton()
+                .getAdminMenu()
+                .getUBSAdminOrders()
+                .getUbsAdminTableComponent()
+                .getColumnOrderID();
+        System.out.println(arr.toString());
+    }
+    @Test
+    public void VerifyDescSortingOfColumnOrderNumber(){
+        List<String> arr = new ArrayList<>();
+        arr = new HomePage(driver)
+                .getHeaderPage()
+                .logIn()
+                .getHeaderPage()
+                .clickUserButton()
+                .clickUbsAdminButton()
+                .getAdminMenu()
+                .getUBSAdminOrders()
+                .clickSortOrderNumberButton()
+                .clickSortOrderNumberButton()
+                .clickSortOrderNumberButton()
+                .getUbsAdminTableComponent()
+                .getColumnOrderID();
+        System.out.println(arr.toString());
+    }
+    @Test
+    public void VerifyAscSortingOfColumnOrderNumber(){
+        List<String> arr = new ArrayList<>();
+        arr = new HomePage(driver)
+                .getHeaderPage()
+                .logIn()
+                .getHeaderPage()
+                .clickUserButton()
+                .clickUbsAdminButton()
+                .getAdminMenu()
+                .getUBSAdminOrders()
+                .clickSortOrderNumberButton()
+                .getUbsAdminTableComponent()
+                .getColumnOrderID();
+        System.out.println(arr.toString());
+    }
+//    @Test
+//    public void VerifyRecipientsName(){
+//
+//    }
+    @AfterMethod
+    public void toQuit(){
+        driver.get(propertiesProvider.getBaseUrl());
+        new HomePage(driver)
+                .getHeaderPage()
+                .logOut();
     }
 }
