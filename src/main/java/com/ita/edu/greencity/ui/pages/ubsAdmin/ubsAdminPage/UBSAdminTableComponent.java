@@ -24,6 +24,14 @@ public class UBSAdminTableComponent extends UBSAdminCommon {
         }
         return rows;
     }
+    public List<String> getColumnOrderID() {
+        List<String>rows = new ArrayList<>();
+        List<WebElement> webElements = driver.findElements(UBSAdminTableComponentLocator.COLUMN_ORDER_ID.getPath());
+        for (WebElement element: webElements) {
+            rows.add(element.getText());
+        }
+        return rows;
+    }
 
 
 

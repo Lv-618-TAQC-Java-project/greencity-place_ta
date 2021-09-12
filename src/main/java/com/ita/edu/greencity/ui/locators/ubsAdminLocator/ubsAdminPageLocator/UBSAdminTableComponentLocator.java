@@ -5,7 +5,8 @@ import org.openqa.selenium.By;
 
 public enum UBSAdminTableComponentLocator implements BaseLocator {
     ROW(By.xpath("//tbody/mat-row[@role='row']")),
-    TABLE(By.xpath("//table[contains(@class,'mat-table')]"));
+    TABLE(By.xpath("//table[contains(@class,'mat-table')]")),
+    COLUMN_ORDER_ID(By.xpath("//mat-cell[2]"));
 
     private final By path;
 
