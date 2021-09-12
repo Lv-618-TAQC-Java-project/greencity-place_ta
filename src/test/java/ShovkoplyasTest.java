@@ -1,3 +1,4 @@
+import com.ita.edu.greencity.tools.jdbc.DataBaseConnection;
 import com.ita.edu.greencity.ui.pages.HomePage;
 import com.ita.edu.greencity.ui.pages.ubsAdmin.ubsAdminPage.UBSAdminRowTableComponent;
 import org.testng.Assert;
@@ -12,6 +13,15 @@ public class ShovkoplyasTest extends TestRunner{
     private final int DISPLAY_COUNTER_10 = 10;
     private final int DISPLAY_COUNTER_15 = 15;
     private final int DISPLAY_COUNTER_20 = 20;
+    private final String USER_NAME = "TestNameVolodumur";
+    private final String USER_LAST_NAME = "TestSurnameVolodumur";
+    private final String USER_PHONE_NUMBER = "0938111111";
+    private final String USER_PHONE_NUMBER_FOR_DB = "+38" + USER_PHONE_NUMBER;
+    private final String USER_EMAIL = "TestEmail@gmail.com";
+    private final String CARD_NUMBER = "4444555566661111";
+    private final String CVV = "123";
+    private final String CARD_EXPIRE = "1122";
+
     @Test
     public void TestFunctionalityOfDisplayCounterWith10Rows(){
         List<String> arr = new ArrayList<>();
@@ -113,10 +123,36 @@ public class ShovkoplyasTest extends TestRunner{
                 .getColumnOrderID();
         System.out.println(arr.toString());
     }
-//    @Test
-//    public void VerifyRecipientsName(){
-//
-//    }
+    @Test
+    public void VerifyRecipientsName() {
+        new HomePage(driver)
+                .getHeaderPage()
+                .logIn()
+                .getHeaderPage()
+                .clickUbsCourierButton()
+                .clickCallUpTheCourierButton().setNumberOfPackages("2", "2", "2")
+                .clickNextButton()
+                .setPersonalData(USER_NAME, USER_LAST_NAME, USER_PHONE_NUMBER,USER_EMAIL )
+                .clickNextButton()
+                .clickOrderButton()
+                .acceptAlert()
+                .setNumberOfCard(CARD_NUMBER)
+                .setCvvOfCard(CVV)
+                .setDateOfTheEndCard(CARD_EXPIRE)
+                .setEmail(USER_EMAIL)
+                .clickPayButton()
+                .clickContinueButton();
+
+        DataBaseConnection dataBase = new DataBaseConnection();
+        dataBase.connectionToDataBase();
+
+        dataBase.DeleteOrderFromAllTable(
+                dataBase.findOrderId(USER_NAME, USER_LAST_NAME, USER_PHONE_NUMBER_FOR_DB,USER_EMAIL));
+
+        dataBase.closeConnection();
+    }
+
+
     @AfterMethod
     public void toQuit(){
         driver.get(propertiesProvider.getBaseUrl());
