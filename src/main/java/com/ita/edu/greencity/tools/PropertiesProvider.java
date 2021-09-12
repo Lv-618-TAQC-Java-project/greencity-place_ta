@@ -35,5 +35,13 @@ public class PropertiesProvider {
         return prop.getProperty("adminPassword");
     }
 
+    public String getFirstCertificateNumber(){
+        return prop.getProperty("firstCertificateNumber");
+    }
+
+    public String getSecondCertificateNumber(){
+        return prop.getProperty("secondCertificateNumber");
+    }
+
 
 }

@@ -2,7 +2,7 @@ package com.ita.edu.greencity.ui.pages;
 
 import com.ita.edu.greencity.tools.PropertiesProvider;
 import com.ita.edu.greencity.ui.locators.HeaderLocator;
-import com.ita.edu.greencity.ui.pages.ubsCourier.ubsCourierPage;
+import com.ita.edu.greencity.ui.pages.ubsCourier.UBSCourierPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import com.ita.edu.greencity.ui.pages.ubsAdmin.ubsAdminPage.UBSAdminCommon;
@@ -120,9 +120,9 @@ public class HeaderPage extends BasePage {
         return ubsCourier;
     }
 
-    public ubsCourierPage clickOnUbsCourierButton(){
+    public UBSCourierPage clickOnUbsCourierButton(){
         getUbsCourier().click();
-        return new ubsCourierPage(driver);
+        return new UBSCourierPage(driver);
     }
 }
 

@@ -1,4 +1,5 @@
 import com.ita.edu.greencity.tools.PropertiesProvider;
+import com.ita.edu.greencity.ui.pages.ubsAdmin.ubsAdminPage.UBSAdminCommon;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -18,6 +19,7 @@ public abstract class TestRunner {
 
     protected WebDriver driver;
     PropertiesProvider propertiesProvider = new PropertiesProvider();
+    UBSAdminCommon ubsAdminCommon = new UBSAdminCommon(driver);
 
     private void initializeDriver() {
         switch (propertiesProvider.getBrowser()) {
@@ -51,7 +53,7 @@ public abstract class TestRunner {
     @BeforeClass
     public void beforeClass() {
         initializeDriver();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
         driver.manage().window().maximize();
 

@@ -1,6 +1,7 @@
 package com.ita.edu.greencity.ui.pages.ubsCourier.order;
 
 
+import com.ita.edu.greencity.tools.PropertiesProvider;
 import com.ita.edu.greencity.ui.locators.ubsCourier.order.OrderDetailsLocator;
 import com.ita.edu.greencity.ui.pages.BasePage;
 import org.openqa.selenium.WebDriver;
@@ -9,6 +10,7 @@ import org.openqa.selenium.WebElement;
 import java.util.concurrent.TimeUnit;
 
 public class OrderDetailsPage extends BasePage {
+    private PropertiesProvider provider;
 
     private WebElement numberOfPackagesOldClothesVolume20;
     private WebElement numberOfPackagesOldClothesVolume120;
@@ -40,14 +42,17 @@ public class OrderDetailsPage extends BasePage {
     }
 
     public OrderDetailsPage setNumberOfPackagesOldClothesVolume20Field(String number) {
+        this.getNumberOfPackagesOldClothesVolume20Input().clear();
         this.getNumberOfPackagesOldClothesVolume20Input().sendKeys(number);
         return this;
     }
     public OrderDetailsPage setNumberOfPackagesOldClothesVolume120Field(String number) {
+        this.getNumberOfPackagesOldClothesVolume120Input().clear();
         this.getNumberOfPackagesOldClothesVolume120Input().sendKeys(number);
         return this;
     }
     public OrderDetailsPage setNumberOfPackagesRecycledMaterialsVolume120(String number) {
+        this.getNumberOfPackagesRecycledMaterialsVolume120().clear();
         this.getNumberOfPackagesRecycledMaterialsVolume120().sendKeys(number);
         return this;
     }

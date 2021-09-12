@@ -9,102 +9,67 @@ import org.openqa.selenium.WebElement;
 import java.util.concurrent.TimeUnit;
 
 public class PersonalDataPage extends BasePage {
-    private LinkElement nextButton;
-    private LinkElement nameField;
-    private LinkElement surnameField;
-    private LinkElement phoneNumberField;
-    private LinkElement emailField;
+    private WebElement nameField;
+    private WebElement nextButton;
+    private WebElement surnameField;
+    private WebElement phoneNumberField;
+    private WebElement emailField;
     private WebElement firstGarbageAddressButton;
 
     public PersonalDataPage(WebDriver driver) {
         super(driver);
     }
 
-    public LinkElement getNextButton() {
-        if (nextButton == null)
-            nextButton = new LinkElement(driver, PersonalDataLocator.NEXT_BUTTON.getPath());
-        return nextButton;
+    public WebElement getNextButton() {
+        return driver.findElement(PersonalDataLocator.NEXT_BUTTON.getPath());
     }
 
-    public LinkElement getNameField() {
-        if (nameField == null)
-            nameField = new LinkElement(driver, PersonalDataLocator.PERSONAL_DATA_NAME.getPath());
-        return nameField;
+    public WebElement getNameField() {
+        return driver.findElement(PersonalDataLocator.PERSONAL_DATA_NAME.getPath());
     }
 
-    public LinkElement getSurnameField() {
-        if (surnameField == null)
-            surnameField = new LinkElement(driver, PersonalDataLocator.PERSONAL_DATA_SURNAME.getPath());
-        return surnameField;
-    }
+    public WebElement getSurnameField() {return driver.findElement(PersonalDataLocator.PERSONAL_DATA_SURNAME.getPath());}
 
-    public LinkElement getPhoneNumberField() {
-        if (phoneNumberField == null)
-            phoneNumberField = new LinkElement(driver, PersonalDataLocator.PERSONAL_DATA_PHONE_NUMBER.getPath());
-        return phoneNumberField;
-    }
+    public WebElement getPhoneNumberField() {return driver.findElement(PersonalDataLocator.PERSONAL_DATA_PHONE_NUMBER.getPath());}
 
-    public LinkElement getEmailField() {
-        if (emailField == null)
-            emailField = new LinkElement(driver, PersonalDataLocator.PERSONAL_DATA_EMAIL.getPath());
-        return emailField;
+    public WebElement getEmailField() {
+        return driver.findElement(PersonalDataLocator.PERSONAL_DATA_EMAIL.getPath());
     }
 
     public ConfirmationPage clickNextButton() {
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         this.getNextButton().click();
         return new ConfirmationPage(driver);
     }
     public PersonalDataPage setNameField(String s){
+        this.getNameField().clear();
         this.getNameField().sendKeys(s);
         return this;
     }
     public PersonalDataPage setSurnameField(String s){
+        this.getSurnameField().clear();
         this.getSurnameField().sendKeys(s);
         return this;
     }
     public PersonalDataPage setPhoneNumberField(String s){
+        this.getPhoneNumberField().clear();
         this.getPhoneNumberField().sendKeys(s);
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         return this;
     }
     public PersonalDataPage setEmailField(String s){
-        this.getEmailField().sendKeys(s);
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        return this;
-    }
-    public PersonalDataPage clearNameField(){
-        this.getNameField().clear();
-        return this;
-    }
-    public PersonalDataPage clearSurnameField(){
-        this.getSurnameField().clear();
-        return this;
-    }
-    public PersonalDataPage clearPhoneNumberField(){
-        this.getPhoneNumberField().clear();
-        return this;
-    }
-    public PersonalDataPage clearEmailField(){
         this.getEmailField().clear();
+        this.getEmailField().sendKeys(s);
         return this;
     }
+
     public PersonalDataPage setPersonalData(String name,String surname,String phoneNumber,String email){
-        this.clearNameField()
-                .setNameField(name)
-                .clearSurnameField()
+                 this.setNameField(name)
                 .setSurnameField(surname)
-                .clearPhoneNumberField()
                 .setPhoneNumberField(phoneNumber)
-                .clearEmailField()
                 .setEmailField(email);
         return this;
     }
@@ -122,12 +87,12 @@ public class PersonalDataPage extends BasePage {
     }
 
     public ConfirmationPage setPersonalData(){
-        clearEmailField()
-                .setEmailField("testmail@mail.com")
+                setEmailField("testmail@mail.com")
                 .clickOnFirstGarbageAddressButton()
-                .clearNameField()
                 .setNameField("ThisNameIsForTest")
                 .clickNextButton();
         return new ConfirmationPage(driver);
     }
+
+
 }

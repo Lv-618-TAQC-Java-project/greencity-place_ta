@@ -1,8 +1,9 @@
-package com.ita.edu.greencity.ui.pages.paymentPage;
+package com.ita.edu.greencity.ui.pages.payment;
 
 
 import com.ita.edu.greencity.ui.locators.payment.PaymentPageLocators;
 import com.ita.edu.greencity.ui.pages.BasePage;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -33,7 +34,8 @@ public class PaymentPage extends BasePage {
     }
 
     public ResultOfPaymentPage clickContinueButton() {
-        getContinueButton().click();
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("setTimeout(function(){ $('button').trigger('click'); }, 1000);");
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
@@ -94,19 +96,19 @@ public class PaymentPage extends BasePage {
     }
 
     public PaymentPage setEmail(String email) {
-        this.getEmail().sendKeys(email);
+        getEmail().sendKeys(email);
         return this;
     }
 
     public PaymentPage clearEmail() {
-        this.getEmail().clear();
+        getEmail().clear();
         return this;
     }
 
     public ResultOfPaymentPage setSuccessfulPaymentCredits(){
         setCvvOfCard("123")
                 .setDateOfTheEndCard("1224")
-                .setNumberOfCard("4444555566661111")
+                .setNumberOfCard("6666444455551111")
                 .setEmail("testmail@mail.com")
                 .clickPayButton()
                 .clickContinueButton();
