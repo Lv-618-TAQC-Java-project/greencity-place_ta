@@ -10,10 +10,10 @@ import java.util.List;
 public class NesterovychTest extends TestRunner{
 
     private final String USER_NAME = "Yurii";
-    private final String USER_LAST_NAME = "Obama";
+    private final String USER_LAST_NAME = "TestUserSurname";
     private final String USER_PHONE_NUMBER = "0960000000";
     private final String USER_PHONE_NUMBER_FOR_DB = "+38" + USER_PHONE_NUMBER;
-    private final String USER_EMAIL = "BarakObamaOutPresident@gmail.com";
+    private final String USER_EMAIL = "TestEmailyurii@gmail.com";
     private final String CARD_NUMBER = "4444555566661111";
     private final String CVV = "123";
     private final String CARD_EXPIRE = "1122";
@@ -104,19 +104,26 @@ public class NesterovychTest extends TestRunner{
                 .clickPayButton()
                 .clickContinueButton();
 
-
-
         DataBaseConnection dataBase = new DataBaseConnection();
         dataBase.connectionToDataBase();
+        String [] idAndOrderId = dataBase.findOrderId(USER_NAME, USER_LAST_NAME, USER_PHONE_NUMBER_FOR_DB,USER_EMAIL);
+        String orderId = idAndOrderId[0];
 
-        String takePhoneNumber = "select recipient_email from orders join users on orders.users_id = users.id where orders.id ="+ +";";
-        dataBase.getListFromTable(takePhoneNumber);
+        String executeQuery = "select email from ubs_user where id = '" + orderId +"';";
+        String actualEmail = dataBase.getElementFromTable(executeQuery);
+        String expectedEmail = USER_EMAIL;
 
+        System.out.println("Actual email: ");
+        System.out.println(actualEmail);
 
-        dataBase.DeleteOrderFromAllTable(
-                dataBase.findOrderId(USER_NAME, USER_LAST_NAME, USER_PHONE_NUMBER_FOR_DB,USER_EMAIL));
+        System.out.println("Expected email: ");
+        System.out.println(expectedEmail);
+
+        dataBase.DeleteOrderFromAllTable(idAndOrderId);
 
         dataBase.closeConnection();
+
+        Assert.assertEquals(actualEmail, expectedEmail);
     }
 
     @AfterMethod
