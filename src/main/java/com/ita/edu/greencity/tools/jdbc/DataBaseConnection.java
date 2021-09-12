@@ -66,6 +66,21 @@ public class DataBaseConnection {
         }
         return expectedResult;
     }
+    public String getElementFromTable(String executeQuery) {
+
+        List<String> expectedResult = new ArrayList<>();
+        try {
+            Statement statement = getConnection().createStatement();
+            ResultSet expected = statement.executeQuery(executeQuery);
+            while (expected.next()) {
+                String number = expected.getString(1);
+                expectedResult.add(number);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return expectedResult.get(0);
+    }
 
     public void DeleteOrdersFromTable(String executeQuery) {
 
