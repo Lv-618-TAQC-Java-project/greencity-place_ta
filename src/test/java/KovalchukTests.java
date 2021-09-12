@@ -10,8 +10,8 @@ public class KovalchukTests extends TestRunner implements Repository{
     @DataProvider(name = "orderDateDataProvider")
     static Object[][] orderDateDataProvider() {
         Object[][] testData = new Object[][]{
-                {"1561", "09/09/2021"},
-                {"1553", "09/09/2021"},
+                {"1561", "10/09/2021"},
+                {"1553", "10/09/2021"},
                 {"1469", "31/08/2021"},
                 {"1459", "27/08/2021"},
                 {"1407", "14/08/2021"}
@@ -37,6 +37,8 @@ public class KovalchukTests extends TestRunner implements Repository{
                 .getHeaderPage()
                 .logIn()
                 .navigateToUBSAdminPage()
+                .getAdminMenu()
+                .getUBSAdminOrders()
                 .clearSearchField()
                 .setSearchField(input)
                 .getTableRow()
@@ -52,6 +54,8 @@ public class KovalchukTests extends TestRunner implements Repository{
                 .getHeaderPage()
                 .logIn()
                 .navigateToUBSAdminPage()
+                .getAdminMenu()
+                .getUBSAdminOrders()
                 .clearSearchField()
                 .setSearchField(input)
                 .getTableRow()
