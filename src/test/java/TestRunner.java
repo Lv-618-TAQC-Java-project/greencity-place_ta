@@ -1,6 +1,5 @@
 import com.ita.edu.greencity.tools.PropertiesProvider;
 import com.ita.edu.greencity.ui.pages.HomePage;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
