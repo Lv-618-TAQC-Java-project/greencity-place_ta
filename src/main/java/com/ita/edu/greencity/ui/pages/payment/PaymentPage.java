@@ -1,5 +1,6 @@
 package com.ita.edu.greencity.ui.pages.payment;
 
+
 import com.ita.edu.greencity.ui.locators.payment.PaymentPageLocators;
 import com.ita.edu.greencity.ui.pages.BasePage;
 import org.openqa.selenium.JavascriptExecutor;
@@ -53,6 +54,9 @@ public class PaymentPage extends BasePage {
         return this;
     }
 
+    private WebElement getContinueButton() {
+        return driver.findElement(PaymentPageLocators.CONTINUE_BUTTON.getPath());
+    }
 
     private WebElement getDateOfTheEndCard() {
         return driver.findElement(PaymentPageLocators.DATE_OF_THE_END_OF_THE_CARD.getPath());
@@ -101,5 +105,13 @@ public class PaymentPage extends BasePage {
         return this;
     }
 
-
+    public ResultOfPaymentPage setSuccessfulPaymentCredits(){
+        setCvvOfCard("123")
+                .setDateOfTheEndCard("1224")
+                .setNumberOfCard("6666444455551111")
+                .setEmail("testmail@mail.com")
+                .clickPayButton()
+                .clickContinueButton();
+        return new ResultOfPaymentPage(driver);
+    }
 }

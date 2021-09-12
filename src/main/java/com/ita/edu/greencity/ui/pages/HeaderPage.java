@@ -7,6 +7,7 @@ import com.ita.edu.greencity.ui.pages.ubsCourier.UBSCourierPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+
 public class HeaderPage extends BasePage {
     private WebElement ecoNews;
     private WebElement tipsAndTricks;
@@ -67,10 +68,6 @@ public class HeaderPage extends BasePage {
         return driver.findElement(HeaderLocator.EN_LANGUAGE_BUTTON.getPath());
     }
 
-    public WebElement getUbsCourierButton() {
-        return driver.findElement(HeaderLocator.UBS_COURIER_BUTTON.getPath());
-    }
-
     public LoginPage clickSignInButton() {
         getSignInButton().click();
         return new LoginPage(driver);
@@ -117,10 +114,21 @@ public class HeaderPage extends BasePage {
                 .clickSignOutButton();
         return new HomePage(driver);
     }
-    public UBSCourierPage clickUbsCourierButton(){
-        getUbsCourierButton().click();
+
+    public WebElement getUbsCourier() {
+        if (ubsCourier == null){
+            return ubsCourier = driver.findElement(HeaderLocator.UBS_COURIER_BUTTON.getPath());
+        }
+        return ubsCourier;
+    }
+
+    public UBSCourierPage clickOnUbsCourierButton(){
+        getUbsCourier().click();
         return new UBSCourierPage(driver);
     }
+
+
+
 }
 
 

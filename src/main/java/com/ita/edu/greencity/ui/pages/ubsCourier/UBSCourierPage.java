@@ -1,7 +1,6 @@
 package com.ita.edu.greencity.ui.pages.ubsCourier;
 
 import com.ita.edu.greencity.ui.elements.LinkElement;
-
 import com.ita.edu.greencity.ui.locators.ubsCourier.UBSCourierLocator;
 import com.ita.edu.greencity.ui.pages.BasePage;
 import com.ita.edu.greencity.ui.pages.ubsCourier.order.OrderDetailsPage;
