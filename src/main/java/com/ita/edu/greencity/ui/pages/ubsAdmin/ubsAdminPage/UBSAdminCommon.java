@@ -67,6 +67,10 @@ public class UBSAdminCommon extends BasePage {
         return driver.findElement(UBSAdminCommonLocator.SORT_ORDER_NUMBER_BUTTON.getPath());
     }
 
+    public WebElement getSortDistrictButton(){
+        return driver.findElement(UBSAdminCommonLocator.SORT_DISTRICT_BUTTON.getPath());
+    }
+
     public UBSAdminCommon clearSearchField() {
         getSearchField().clear();
         return this;
@@ -124,6 +128,13 @@ public class UBSAdminCommon extends BasePage {
         tableIsLoaded();
         return this;
     }
+
+    public UBSAdminCommon clickSortDistrictButton(){
+        getSortDistrictButton().click();
+        tableIsLoaded();
+        return this;
+    }
+
 
     public UBSAdminCommon clickSortOrderNumberButton(){
         getSortOrderNumberButton().click();

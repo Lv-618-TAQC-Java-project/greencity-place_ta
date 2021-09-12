@@ -1,8 +1,6 @@
 package com.ita.edu.greencity.ui.pages.ubsAdmin.ubsAdminPage;
 
-import com.ita.edu.greencity.ui.locators.ubsAdminLocator.ubsAdminPageLocator.UBSAdminRowTableComponentLocator;
 import com.ita.edu.greencity.ui.locators.ubsAdminLocator.ubsAdminPageLocator.UBSAdminTableComponentLocator;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -27,6 +25,15 @@ public class UBSAdminTableComponent extends UBSAdminCommon {
     public List<String> getColumnOrderID() {
         List<String>rows = new ArrayList<>();
         List<WebElement> webElements = driver.findElements(UBSAdminTableComponentLocator.COLUMN_ORDER_ID.getPath());
+        for (WebElement element: webElements) {
+            rows.add(element.getText());
+        }
+        return rows;
+    }
+
+    public List<String> getColumnDistrict() {
+        List<String> rows = new ArrayList<>();
+        List<WebElement> webElements = driver.findElements(UBSAdminTableComponentLocator.COLUMN_DISTRICT.getPath());
         for (WebElement element: webElements) {
             rows.add(element.getText());
         }
