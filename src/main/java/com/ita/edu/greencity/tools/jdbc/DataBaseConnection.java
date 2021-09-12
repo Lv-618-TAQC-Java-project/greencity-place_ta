@@ -50,22 +50,37 @@ public class DataBaseConnection {
             throwables.printStackTrace();
         }
     }
-//    public String SelectStatement(String executeQuery) {
-//
-//        List<String> expectedResult1 = new ArrayList<>();
-//        try {
-//            Statement statement = getConnection().createStatement();
-//            ResultSet expected = statement.executeQuery(executeQuery);
-//            while (expected.next()) {
-//                String number = expected.getString(1);
-//                expectedResult1.add(number);
-//            }
-//            //System.out.println(expectedResult1.get(0));
-//        } catch (SQLException throwables) {
-//            throwables.printStackTrace();
-//        }
-//        return expectedResult1.get(0);
-//    }
+
+    public List<String> getListFromTable(String executeQuery) {
+
+        List<String> expectedResult = new ArrayList<>();
+        try {
+            Statement statement = getConnection().createStatement();
+            ResultSet expected = statement.executeQuery(executeQuery);
+            while (expected.next()) {
+                String number = expected.getString(1);
+                expectedResult.add(number);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return expectedResult;
+    }
+    public String getElementFromTable(String executeQuery) {
+
+        List<String> expectedResult = new ArrayList<>();
+        try {
+            Statement statement = getConnection().createStatement();
+            ResultSet expected = statement.executeQuery(executeQuery);
+            while (expected.next()) {
+                String number = expected.getString(1);
+                expectedResult.add(number);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return expectedResult.get(0);
+    }
 
     public void DeleteOrdersFromTable(String executeQuery) {
 

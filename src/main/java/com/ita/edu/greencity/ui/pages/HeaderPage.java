@@ -2,10 +2,11 @@ package com.ita.edu.greencity.ui.pages;
 
 import com.ita.edu.greencity.tools.PropertiesProvider;
 import com.ita.edu.greencity.ui.locators.HeaderLocator;
+import com.ita.edu.greencity.ui.pages.ubsAdmin.ubsAdminPage.UBSAdminCommon;
 import com.ita.edu.greencity.ui.pages.ubsCourier.UBSCourierPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import com.ita.edu.greencity.ui.pages.ubsAdmin.ubsAdminPage.UBSAdminCommon;
+
 
 public class HeaderPage extends BasePage {
     private WebElement ecoNews;
@@ -85,6 +86,7 @@ public class HeaderPage extends BasePage {
         return this;
     }
 
+
     public UBSAdminCommon clickUbsAdminButton() {
         getUbsAdminButton().click();
         return new UBSAdminCommon(driver);
@@ -94,7 +96,7 @@ public class HeaderPage extends BasePage {
         getSignOutButton().click();
         return new HomePage(driver);
     }
-    public HeaderPage logIn() {
+    public MySpacePage logIn() {
         PropertiesProvider prop = new PropertiesProvider();
         getHeaderPage()
                 .clickSignInButton()
@@ -103,7 +105,7 @@ public class HeaderPage extends BasePage {
                 .clearPasswordField()
                 .setPasswordField(prop.getAdminPassword())
                 .clickSignInButton();
-        return new HeaderPage(driver);
+        return new MySpacePage(driver);
     }
 
     public HomePage logOut(){
@@ -124,6 +126,9 @@ public class HeaderPage extends BasePage {
         getUbsCourier().click();
         return new UBSCourierPage(driver);
     }
+
+
+
 }
 
 

@@ -23,6 +23,14 @@ public class PropertiesProvider {
         return prop.getProperty("baseUrl");
     }
 
+    public String getChromeBrowser() {
+        return prop.getProperty("chromeWebdriverPath");
+    }
+
+    public String getFirefoxBrowser() {
+        return prop.getProperty("geckoDriver");
+    }
+
     public String getBrowser() {
         return prop.getProperty("browser");
     }

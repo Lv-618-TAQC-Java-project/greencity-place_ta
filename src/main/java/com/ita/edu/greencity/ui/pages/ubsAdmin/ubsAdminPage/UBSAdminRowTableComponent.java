@@ -159,4 +159,5 @@ public final class UBSAdminRowTableComponent {
     public WebElement getResponsibleManager() {
         return item.findElement(By.className("cdk-column-responsible_manager"));
     }
+
 }

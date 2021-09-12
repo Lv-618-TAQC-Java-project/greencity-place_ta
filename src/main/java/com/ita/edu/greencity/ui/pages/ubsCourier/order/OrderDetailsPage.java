@@ -1,6 +1,7 @@
 package com.ita.edu.greencity.ui.pages.ubsCourier.order;
 
 
+
 import com.ita.edu.greencity.tools.PropertiesProvider;
 import com.ita.edu.greencity.ui.locators.ubsCourier.order.OrderDetailsLocator;
 import com.ita.edu.greencity.ui.pages.BasePage;
@@ -143,3 +144,4 @@ public class OrderDetailsPage extends BasePage {
 
 
 }
+

@@ -5,6 +5,7 @@ import com.ita.edu.greencity.ui.locators.ubsCourier.order.PersonalDataLocator;
 import com.ita.edu.greencity.ui.pages.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 
 import java.util.concurrent.TimeUnit;
 

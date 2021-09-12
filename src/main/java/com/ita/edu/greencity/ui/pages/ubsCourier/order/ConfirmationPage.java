@@ -25,7 +25,7 @@ public class ConfirmationPage extends BasePage {
     }
     public PaymentPage acceptAlert(){
         try {
-            Thread.sleep(8000);
+            Thread.sleep(4000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

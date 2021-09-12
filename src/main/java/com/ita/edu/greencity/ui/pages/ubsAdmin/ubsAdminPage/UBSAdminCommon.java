@@ -20,11 +20,14 @@ public class UBSAdminCommon extends BasePage {
     private UBSAdminViewTableComponent ubsAdminViewTableComponent;
     private UBSAdminRowTableComponentLocator ubsAdminRowTableComponentLocator;
 
-
     private WebElement searchField;
     private WebElement searchIcon;
     private WebElement viewTable;
     private WebElement firstCertificateCell;
+    private WebElement displayCounterDropdown;
+    private WebElement displayCounter10;
+    private WebElement displayCounter15;
+    private WebElement displayCounter20;
 
     public UBSAdminCommon(WebDriver driver) {
         super(driver);
@@ -47,6 +50,30 @@ public class UBSAdminCommon extends BasePage {
     public WebElement getViewTable() {
         viewTable = driver.findElement(UBSAdminCommonLocator.VIEW_TABLE_BUTTON.getPath());
         return viewTable;
+    }
+
+    public WebElement getDisplayCounterDropdown() {
+        displayCounterDropdown = driver.findElement(UBSAdminCommonLocator.DISPLAY_COUNTER_DROPDOWN.getPath());
+        return displayCounterDropdown;
+    }
+    public WebElement getDisplayCounter10() {
+        displayCounter10 = driver.findElement(UBSAdminCommonLocator.DISPLAY_COUNTER_10.getPath());
+        return displayCounterDropdown;
+    }
+    public WebElement getDisplayCounter15() {
+        displayCounter15 = driver.findElement(UBSAdminCommonLocator.DISPLAY_COUNTER_15.getPath());
+        return displayCounterDropdown;
+    }
+    public WebElement getDisplayCounter20() {
+        displayCounter20 = driver.findElement(UBSAdminCommonLocator.DISPLAY_COUNTER_20.getPath());
+        return displayCounterDropdown;
+    }
+    public WebElement getSortOrderNumberButton(){
+        return driver.findElement(UBSAdminCommonLocator.SORT_ORDER_NUMBER_BUTTON.getPath());
+    }
+
+    public WebElement getSortDistrictButton(){
+        return driver.findElement(UBSAdminCommonLocator.SORT_DISTRICT_BUTTON.getPath());
     }
 
     public UBSAdminCommon clearSearchField() {
@@ -89,5 +116,41 @@ public class UBSAdminCommon extends BasePage {
     }
 
 
+
+    public UBSAdminCommon clickDisplayCounterDropdown() {
+        getDisplayCounterDropdown().click();
+        return this;
+    }
+
+    public UBSAdminCommon clickDisplayCounter10() {
+        getDisplayCounter10().click();
+        tableIsLoaded();
+        return this;
+    }
+
+    public UBSAdminCommon clickDisplayCounter15() {
+        getDisplayCounter15().click();
+        tableIsLoaded();
+        return this;
+    }
+
+    public UBSAdminCommon clickDisplayCounter20() {
+        getDisplayCounter20().click();
+        tableIsLoaded();
+        return this;
+    }
+
+    public UBSAdminCommon clickSortDistrictButton(){
+        getSortDistrictButton().click();
+        tableIsLoaded();
+        return this;
+    }
+
+
+    public UBSAdminCommon clickSortOrderNumberButton(){
+        getSortOrderNumberButton().click();
+        tableIsLoaded();
+        return this;
+    }
 
 }

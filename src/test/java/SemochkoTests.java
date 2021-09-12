@@ -12,6 +12,7 @@ public class SemochkoTests extends TestRunner {
     public void verifyTwoCertificateViewCorrectness() {
         new HeaderPage(driver)
                 .logIn()
+                .getHeaderPage()
                 .clickOnUbsCourierButton()
                 .clickCallUpTheCourierButton()
                 .setOrderDetails()
@@ -31,6 +32,7 @@ public class SemochkoTests extends TestRunner {
     public void verifyCertificateTransferCorrectness() {
         new HeaderPage(driver)
                 .logIn()
+                .getHeaderPage()
                 .clickOnUbsCourierButton()
                 .clickCallUpTheCourierButton()
                 .setNumberOfPackagesOldClothesVolume120Field("30")
