@@ -8,6 +8,7 @@ public enum UBSAdminCommonLocator implements BaseLocator {
     VIEW_TABLE_BUTTON(By.xpath("//button[@class='view-table-btn']")),
     SEARCH_ICON(By.xpath("//i[@class='fa fa-search']")),
     TABLE(By.xpath("//table[@role='presentation']")),
+    FIRST_CERTIFICATE_TABLE_CELL(By.xpath("(//mat-cell[contains(@class, 'cdk-column-order_certificate_code')])[1]//span")),
     DISPLAY_COUNTER_DROPDOWN(By.xpath("//select[@class = 'display-counter']")),
     DISPLAY_COUNTER_10(By.xpath("//select[@class = 'display-counter']//option[contains(text(),'10')]")),
     DISPLAY_COUNTER_15(By.xpath("//select[@class = 'display-counter']//option[contains(text(),'15')]")),

@@ -156,7 +156,7 @@ public class ShovkoplyasTest extends TestRunner{
                 .getHeaderPage()
                 .logIn()
                 .getHeaderPage()
-                .clickUbsCourierButton()
+                .clickOnUbsCourierButton()
                 .clickCallUpTheCourierButton().setNumberOfPackages("2", "2", "2")
                 .clickNextButton()
                 .setPersonalData(USER_NAME, USER_LAST_NAME, USER_PHONE_NUMBER,USER_EMAIL )

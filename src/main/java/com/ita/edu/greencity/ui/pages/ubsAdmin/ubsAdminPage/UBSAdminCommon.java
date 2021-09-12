@@ -23,6 +23,7 @@ public class UBSAdminCommon extends BasePage {
     private WebElement searchField;
     private WebElement searchIcon;
     private WebElement viewTable;
+    private WebElement firstCertificateCell;
     private WebElement displayCounterDropdown;
     private WebElement displayCounter10;
     private WebElement displayCounter15;
@@ -40,6 +41,10 @@ public class UBSAdminCommon extends BasePage {
     public WebElement getSearchIcon() {
         searchIcon = driver.findElement(UBSAdminCommonLocator.SEARCH_ICON.getPath());
         return searchIcon;
+    }
+
+    public WebElement getFirstCertificateCell() {
+        return firstCertificateCell = driver.findElement(UBSAdminCommonLocator.FIRST_CERTIFICATE_TABLE_CELL.getPath());
     }
 
     public WebElement getViewTable() {
@@ -105,6 +110,12 @@ public class UBSAdminCommon extends BasePage {
         waitHelper = new WaitHelper(driver);
         waitHelper.waitForVisibilityOfElementLocated(UBSAdminTableComponentLocator.TABLE.getPath());
     }
+
+    public String getTextOfCertificateNumber(){
+        return getFirstCertificateCell().getText();
+    }
+
+
 
     public UBSAdminCommon clickDisplayCounterDropdown() {
         getDisplayCounterDropdown().click();

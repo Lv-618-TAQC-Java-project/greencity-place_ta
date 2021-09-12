@@ -13,3 +13,4 @@ buildNumber.properties
 greencity-place_ta.iml
 data.properties
 .DS_Store
+logs/

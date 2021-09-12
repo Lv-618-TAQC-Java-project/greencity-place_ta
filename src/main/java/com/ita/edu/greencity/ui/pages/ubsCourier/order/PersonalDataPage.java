@@ -1,5 +1,6 @@
 package com.ita.edu.greencity.ui.pages.ubsCourier.order;
 
+import com.ita.edu.greencity.ui.elements.LinkElement;
 import com.ita.edu.greencity.ui.locators.ubsCourier.order.PersonalDataLocator;
 import com.ita.edu.greencity.ui.pages.BasePage;
 import org.openqa.selenium.WebDriver;
@@ -14,6 +15,7 @@ public class PersonalDataPage extends BasePage {
     private WebElement surnameField;
     private WebElement phoneNumberField;
     private WebElement emailField;
+    private WebElement firstGarbageAddressButton;
 
     public PersonalDataPage(WebDriver driver) {
         super(driver);
@@ -72,5 +74,26 @@ public class PersonalDataPage extends BasePage {
                 .setEmailField(email);
         return this;
     }
+
+    public WebElement getFirstGarbageAddressButton() {
+        if (firstGarbageAddressButton == null){
+            return firstGarbageAddressButton = driver.findElement(PersonalDataLocator.FIRST_GARBAGE_ADDRESS_BUTTON.getPath());
+        }
+        return firstGarbageAddressButton;
+    }
+
+    public PersonalDataPage clickOnFirstGarbageAddressButton(){
+        getFirstGarbageAddressButton().click();
+        return this;
+    }
+
+    public ConfirmationPage setPersonalData(){
+                setEmailField("testmail@mail.com")
+                .clickOnFirstGarbageAddressButton()
+                .setNameField("ThisNameIsForTest")
+                .clickNextButton();
+        return new ConfirmationPage(driver);
+    }
+
 
 }

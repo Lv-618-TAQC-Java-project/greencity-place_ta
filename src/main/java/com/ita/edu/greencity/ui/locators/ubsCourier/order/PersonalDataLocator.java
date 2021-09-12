@@ -8,7 +8,8 @@ public enum PersonalDataLocator implements BaseLocator {
     PERSONAL_DATA_NAME(By.xpath("//input[@formcontrolname = 'firstName']")),
     PERSONAL_DATA_SURNAME(By.xpath("//input[@formcontrolname = 'lastName']")),
     PERSONAL_DATA_PHONE_NUMBER(By.xpath("//input[@formcontrolname = 'phoneNumber']")),
-    PERSONAL_DATA_EMAIL(By.xpath("//input[@formcontrolname = 'email']"));
+    PERSONAL_DATA_EMAIL(By.xpath("//input[@formcontrolname = 'email']")),
+    FIRST_GARBAGE_ADDRESS_BUTTON(By.xpath("//input[@formcontrolname='address']"));
 
     private final By path;
 

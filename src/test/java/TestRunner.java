@@ -1,14 +1,14 @@
 import com.ita.edu.greencity.tools.PropertiesProvider;
-import io.github.bonigarcia.wdm.WebDriverManager;
+import com.ita.edu.greencity.ui.pages.HomePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.opera.OperaDriver;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.DataProvider;
 
 import java.util.concurrent.TimeUnit;
 
@@ -66,6 +66,14 @@ public abstract class TestRunner {
     @BeforeMethod
     public void setUp() {
         driver.get(propertiesProvider.getBaseUrl());
+    }
+
+    @AfterMethod
+    public void toQuit() {
+        driver.get(propertiesProvider.getBaseUrl());
+        new HomePage(driver)
+                .getHeaderPage()
+                .logOut();
     }
 
 }

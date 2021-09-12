@@ -5,7 +5,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 
-public class KovalchukTests extends TestRunner implements Repository{
+public class KovalchukTests extends TestRunner {
 
     @DataProvider(name = "orderDateDataProvider")
     static Object[][] orderDateDataProvider() {

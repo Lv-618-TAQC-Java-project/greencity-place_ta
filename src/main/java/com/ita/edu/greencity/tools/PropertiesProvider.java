@@ -23,6 +23,14 @@ public class PropertiesProvider {
         return prop.getProperty("baseUrl");
     }
 
+    public String getChromeBrowser() {
+        return prop.getProperty("chromeWebdriverPath");
+    }
+
+    public String getFirefoxBrowser() {
+        return prop.getProperty("geckoDriver");
+    }
+
     public String getBrowser() {
         return prop.getProperty("browser");
     }
@@ -33,6 +41,14 @@ public class PropertiesProvider {
 
     public String getAdminPassword() {
         return prop.getProperty("adminPassword");
+    }
+
+    public String getFirstCertificateNumber(){
+        return prop.getProperty("firstCertificateNumber");
+    }
+
+    public String getSecondCertificateNumber(){
+        return prop.getProperty("secondCertificateNumber");
     }
 
     public String getDataBaseURL(){return prop.getProperty("URL");}
