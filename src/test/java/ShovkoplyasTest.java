@@ -76,8 +76,8 @@ public class ShovkoplyasTest extends TestRunner{
     }
     @Test
     public void VerifyIsDefaultDescSortingOfColumnOrderNumber(){
-        List<String> arr = new ArrayList<>();
-        arr = new HomePage(driver)
+        List<String> actual = new ArrayList<>();
+        actual = new HomePage(driver)
                 .getHeaderPage()
                 .logIn()
                 .getHeaderPage()
@@ -87,12 +87,22 @@ public class ShovkoplyasTest extends TestRunner{
                 .getUBSAdminOrders()
                 .getUbsAdminTableComponent()
                 .getColumnOrderID();
-        System.out.println(arr.toString());
+
+        DataBaseConnection db = new DataBaseConnection();
+        db.connectionToDataBase();
+
+        String executeQuery = "select id from orders order by id desc limit 10;";
+        List<String> expected = db.getListFromTable(executeQuery);
+        for (int i = 0; i < actual.size(); i++) {
+            Assert.assertEquals(actual.get(i), expected.get(i));
+        }
+
+        db.closeConnection();
     }
     @Test
     public void VerifyDescSortingOfColumnOrderNumber(){
-        List<String> arr = new ArrayList<>();
-        arr = new HomePage(driver)
+        List<String> actual = new ArrayList<>();
+        actual = new HomePage(driver)
                 .getHeaderPage()
                 .logIn()
                 .getHeaderPage()
@@ -102,15 +112,24 @@ public class ShovkoplyasTest extends TestRunner{
                 .getUBSAdminOrders()
                 .clickSortOrderNumberButton()
                 .clickSortOrderNumberButton()
-                .clickSortOrderNumberButton()
                 .getUbsAdminTableComponent()
                 .getColumnOrderID();
-        System.out.println(arr.toString());
+
+        DataBaseConnection db = new DataBaseConnection();
+        db.connectionToDataBase();
+
+        String executeQuery = "select id from orders order by id desc limit 10;";
+        List<String> expected = db.getListFromTable(executeQuery);
+        for (int i = 0; i < actual.size(); i++) {
+            Assert.assertEquals(actual.get(i), expected.get(i));
+        }
+
+        db.closeConnection();
     }
     @Test
     public void VerifyAscSortingOfColumnOrderNumber(){
-        List<String> arr = new ArrayList<>();
-        arr = new HomePage(driver)
+        List<String> actual;
+        actual = new HomePage(driver)
                 .getHeaderPage()
                 .logIn()
                 .getHeaderPage()
@@ -121,43 +140,58 @@ public class ShovkoplyasTest extends TestRunner{
                 .clickSortOrderNumberButton()
                 .getUbsAdminTableComponent()
                 .getColumnOrderID();
-        System.out.println(arr.toString());
+
+        DataBaseConnection db = new DataBaseConnection();
+        db.connectionToDataBase();
+
+        String executeQuery = "select id from orders order by id limit 10;";
+        List<String> expected = db.getListFromTable(executeQuery);
+        for (int i = 0; i < actual.size(); i++) {
+            Assert.assertEquals(actual.get(i), expected.get(i));
+        }
+
+        db.closeConnection();
     }
-    @Test
-    public void VerifyRecipientsName() {
-        new HomePage(driver)
-                .getHeaderPage()
-                .logIn()
-                .getHeaderPage()
-                .clickUbsCourierButton()
-                .clickCallUpTheCourierButton().setNumberOfPackages("2", "2", "2")
-                .clickNextButton()
-                .setPersonalData(USER_NAME, USER_LAST_NAME, USER_PHONE_NUMBER,USER_EMAIL )
-                .clickNextButton()
-                .clickOrderButton()
-                .acceptAlert()
-                .setNumberOfCard(CARD_NUMBER)
-                .setCvvOfCard(CVV)
-                .setDateOfTheEndCard(CARD_EXPIRE)
-                .setEmail(USER_EMAIL)
-                .clickPayButton()
-                .clickContinueButton();
+//    @Test
+//    public void VerifyRecipientsName() {
+        //create new order
+//        new HomePage(driver)
+//                .getHeaderPage()
+//                .logIn()
+//                .getHeaderPage()
+//                .clickUbsCourierButton()
+//                .clickCallUpTheCourierButton().setNumberOfPackages("2", "2", "2")
+//                .clickNextButton()
+//                .setPersonalData(USER_NAME, USER_LAST_NAME, USER_PHONE_NUMBER,USER_EMAIL )
+//                .clickNextButton()
+//                .clickOrderButton()
+//                .acceptAlert()
+//                .setNumberOfCard(CARD_NUMBER)
+//                .setCvvOfCard(CVV)
+//                .setDateOfTheEndCard(CARD_EXPIRE)
+//                .setEmail(USER_EMAIL)
+//                .clickPayButton()
+//                .clickContinueButton();
+//        //get user
+//
+//
+//        DataBaseConnection dataBase = new DataBaseConnection();
+//        dataBase.connectionToDataBase();
+//
+//
+//
+//        dataBase.DeleteOrderFromAllTable(
+//                dataBase.findOrderId(USER_NAME, USER_LAST_NAME, USER_PHONE_NUMBER_FOR_DB,USER_EMAIL));
+//
+//        dataBase.closeConnection();
+//    }
+        @AfterMethod
+        public void toQuit () {
+            driver.get(propertiesProvider.getBaseUrl());
+            new HomePage(driver)
+                    .getHeaderPage()
+                    .logOut();
+        }
 
-        DataBaseConnection dataBase = new DataBaseConnection();
-        dataBase.connectionToDataBase();
 
-        dataBase.DeleteOrderFromAllTable(
-                dataBase.findOrderId(USER_NAME, USER_LAST_NAME, USER_PHONE_NUMBER_FOR_DB,USER_EMAIL));
-
-        dataBase.closeConnection();
-    }
-
-
-    @AfterMethod
-    public void toQuit(){
-        driver.get(propertiesProvider.getBaseUrl());
-        new HomePage(driver)
-                .getHeaderPage()
-                .logOut();
-    }
 }
