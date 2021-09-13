@@ -12,6 +12,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import com.ita.edu.greencity.ui.pages.ubsAdmin.ubsAdminPage.UBSAdminViewTableComponent;
+import com.ita.edu.greencity.ui.pages.ubsAdmin.ubsAdminPage.UBSAdminTableComponent;
 
 public class UBSAdminCommon extends BasePage {
 
@@ -109,6 +111,12 @@ public class UBSAdminCommon extends BasePage {
     public void tableIsLoaded() {
         waitHelper = new WaitHelper(driver);
         waitHelper.waitForVisibilityOfElementLocated(UBSAdminTableComponentLocator.TABLE.getPath());
+    }
+    public WebElement getTable(){
+        return driver.findElement(com.ita.edu.greencity.ui.locators.ubsAdminLocator.ubsAdminPageLocator.UBSAdminTableComponentLocator.TABLE.getPath());
+    }
+    public WebElement getDivOfTable(){
+        return driver.findElement(By.className("scrolling"));
     }
 
     public String getTextOfCertificateNumber(){

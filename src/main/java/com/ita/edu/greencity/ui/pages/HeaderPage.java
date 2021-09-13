@@ -109,7 +109,13 @@ public class HeaderPage extends BasePage {
     }
 
     public HomePage logOut(){
-        getHeaderPage()
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+              e.printStackTrace();
+        }
+
+        this
                 .clickUserButton()
                 .clickSignOutButton();
         return new HomePage(driver);
@@ -126,9 +132,6 @@ public class HeaderPage extends BasePage {
         getUbsCourier().click();
         return new UBSCourierPage(driver);
     }
-
-
-
 }
 
 
