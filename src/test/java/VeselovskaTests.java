@@ -1,7 +1,6 @@
 import com.ita.edu.greencity.tools.jdbc.DataBaseConnection;
 import com.ita.edu.greencity.ui.pages.HeaderPage;
 import com.ita.edu.greencity.ui.pages.HomePage;
-import com.ita.edu.greencity.ui.pages.ubsAdmin.ubsAdminPage.UBSAdminRowTableComponent;
 import com.ita.edu.greencity.ui.pages.ubsAdmin.ubsAdminPage.UBSAdminTableComponent;
 
 import org.testng.Assert;
@@ -44,9 +43,10 @@ public class VeselovskaTests extends TestRunner{
                 .navigateToUBSOrderTablePage()
                 .clearSearchField()
                 .setSearchField(userName);
-        long[] results = getActualAndExpectedAmountDue();
+        long[] results = new UBSAdminTableComponent(driver)
+                .getActualAndExpectedAmountDue();
 
-        Assert.assertEquals(isFloatWithTwoDigits(),true);
+        Assert.assertEquals(new UBSAdminTableComponent(driver).isAmountDueFloatWithTwoDigits(),true);
         Assert.assertEquals(results[0], results[1]);
     }
 
@@ -58,7 +58,7 @@ public class VeselovskaTests extends TestRunner{
                 .clearSearchField()
                 .setSearchField(userName);
 
-        Assert.assertEquals(isInteger(),true);
+        Assert.assertEquals(new UBSAdminTableComponent(driver).isOrderCertificatePointsPositiveInteger(),true);
     }
 
 
@@ -78,50 +78,5 @@ public class VeselovskaTests extends TestRunner{
         dataBase.closeConnection();
     }
 
-    private long[] getActualAndExpectedAmountDue(){
-        UBSAdminRowTableComponent rowTableComponent
-                = new UBSAdminTableComponent(driver)
-                .getRows()
-                .get(0);
-        long totalOrderSum = rowTableComponent.getTotalOrderSumValue();
-        long orderCertificatePoints = rowTableComponent.getOrderCertificatePointsValue();
-        long amountDue = Long.parseLong(rowTableComponent.getAmountDue().getText());
-        if(totalOrderSum <= orderCertificatePoints)
-            return new long[]{amountDue, 0};
-        return new long[] {amountDue, totalOrderSum - orderCertificatePoints};
-    }
 
-    private boolean isFloatWithTwoDigits(){
-        UBSAdminRowTableComponent rowTableComponent
-                = new UBSAdminTableComponent(driver)
-                .getRows()
-                .get(0);
-        if(rowTableComponent == null)
-            return false;
-        String amountDue = rowTableComponent.getAmountDue().getText();
-        try {
-            Double.parseDouble(amountDue);
-        }catch (NumberFormatException e){
-            return false;
-        }
-        if (amountDue.charAt(amountDue.length() - 3) != '.')
-            return false;
-        return true;
-    }
-
-    private boolean isInteger(){
-        UBSAdminRowTableComponent rowTableComponent
-                = new UBSAdminTableComponent(driver)
-                .getRows()
-                .get(0);
-        if(rowTableComponent == null)
-            return false;
-        String orderCertificatePoints = rowTableComponent.getOrderCertificatePoints().getText();
-        try {
-            Integer.parseInt(orderCertificatePoints);
-        }catch (NumberFormatException e){
-            return false;
-        }
-        return true;
-    }
 }
